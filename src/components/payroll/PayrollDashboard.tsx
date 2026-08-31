@@ -317,7 +317,7 @@ export const PayrollDashboard: React.FC<PayrollDashboardProps> = ({
               <div className="bg-slate-50 p-3 rounded-lg border border-slate-200">
                 <span className="text-slate-500 block text-[11px]">Empleado</span>
                 <span className="font-bold text-slate-900 text-sm">{selectedItemForInspect.employeeName}</span>
-                <span className="text-slate-600 block">{selectedItemForInspect.position} • Básico: ${selectedItemForInspect.salaryBase.toLocaleString('es-CO')}</span>
+                <span className="text-slate-600 block">{selectedItemForInspect.position} • Básico: ${(selectedItemForInspect.salaryBase ?? 0).toLocaleString('es-CO')}</span>
               </div>
 
               <div className="space-y-3">
@@ -327,7 +327,7 @@ export const PayrollDashboard: React.FC<PayrollDashboardProps> = ({
                   <div key={idx} className="bg-white p-3 rounded-lg border border-slate-200 space-y-1">
                     <div className="flex justify-between items-center font-bold text-slate-900">
                       <span>{exp.concept}</span>
-                      <span className="font-mono text-neutral-900">${exp.value.toLocaleString('es-CO')}</span>
+                      <span className="font-mono text-neutral-900">${(exp.result ?? 0).toLocaleString('es-CO')}</span>
                     </div>
                     <div className="text-slate-600 font-mono text-[11px] bg-slate-50 p-2 rounded border border-slate-100">
                       {exp.formula}

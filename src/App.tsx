@@ -109,7 +109,20 @@ export default function App() {
         if (remote.novedades.length) setNovedades(remote.novedades);
         if (remote.dotacionDeliveries.length) setDotacionDeliveries(remote.dotacionDeliveries);
         if (remote.salaryAdvances.length) setSalaryAdvances(remote.salaryAdvances);
-        if (remote.payrollPeriods.length) setCurrentPeriod(remote.payrollPeriods[0]);
+        if (remote.payrollPeriods.length) {
+          // Mantener SIEMPRE el período quincenal actual como referencia.
+          // Se adopta el guardado en BD sólo si coincide con el período vigente (mismo id),
+          // para conservar estado/totales del período en curso.
+          const current = periodEngine.getCurrentPayrollPeriodInfo().period;
+          const stored = remote.payrollPeriods.find(p => p.id === current.id);
+          if (stored) {
+            setCurrentPeriod({ ...stored, periodType: 'Quincenal', startDate: current.startDate, endDate: current.endDate, paymentDate: current.paymentDate });
+          } else {
+            setCurrentPeriod(current);
+          }
+        } else {
+          setCurrentPeriod(periodEngine.getCurrentPayrollPeriodInfo().period);
+        }
         if (remote.payrollItems.length) setPayrollItems(remote.payrollItems);
         if (remote.auditLogs.length) setAuditLogs(remote.auditLogs);
       } catch (err) {
