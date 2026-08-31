@@ -247,17 +247,18 @@ export class PayrollCalculationEngine {
     }
 
     // Bono No Prestacional FIJO mensual (completa el salario hasta el total pactado).
-    // No constituye salario (Art. 128 CST): se paga proporcionalmente en cada quincena.
+    // No constituye salario (Art. 128 CST). Por ser un bono FIJO, se divide en 2:
+    // cada quincena paga exactamente la mitad del bono mensual.
     const fixedBonusProrated = isIntegral
       ? 0
-      : Math.round((employee.nonSalaryBonus || 0) / periodDays * workedDays);
+      : Math.round((employee.nonSalaryBonus || 0) / 2);
     if (fixedBonusProrated > 0) {
       nonSalaryBonuses += fixedBonusProrated;
       explanations.push({
         concept: 'Bono No Prestacional Fijo (Art. 128 CST)',
-        formula: `($${Math.round(employee.nonSalaryBonus || 0).toLocaleString('es-CO')} / ${periodDays} días) × ${workedDays} días (No constitutivo de salario)`,
+        formula: `Bono mensual $${Math.round(employee.nonSalaryBonus || 0).toLocaleString('es-CO')} ÷ 2 (mitad por quincena, fijo)`,
         baseAmount: employee.nonSalaryBonus || 0,
-        quantity: workedDays,
+        quantity: 0.5,
         result: fixedBonusProrated,
         legalBasis: 'CST Art. 128 / Ley 50 de 1990',
       });

@@ -46,6 +46,7 @@ const EditEmployeeModalContent: React.FC<EditEmployeeModalContentProps> = ({
     employee.workshopSpecialty || 'Mecánica General & Diagnóstico'
   );
   const [currentSalary, setCurrentSalary] = useState(employee.currentSalary);
+  const [nonSalaryBonus, setNonSalaryBonus] = useState(employee.nonSalaryBonus || 0);
   const [phone, setPhone] = useState(employee.phone);
   const [email, setEmail] = useState(employee.email);
   const [address, setAddress] = useState(employee.address);
@@ -68,6 +69,7 @@ const EditEmployeeModalContent: React.FC<EditEmployeeModalContentProps> = ({
       department,
       workshopSpecialty,
       currentSalary,
+      nonSalaryBonus,
       phone,
       email,
       address,
@@ -214,7 +216,7 @@ const EditEmployeeModalContent: React.FC<EditEmployeeModalContentProps> = ({
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
               <div>
-                <label className="block text-slate-600 mb-1 font-medium">Salario Básico Mensual (COP) *</label>
+                <label className="block text-slate-600 mb-1 font-medium">Salario Base Mensual (SMLMV) (COP) *</label>
                 <div className="relative">
                   <span className="absolute left-3 top-2 text-slate-400 font-mono">$</span>
                   <input
@@ -226,6 +228,21 @@ const EditEmployeeModalContent: React.FC<EditEmployeeModalContentProps> = ({
                     className="w-full pl-7 pr-3 py-2 bg-slate-50 border border-slate-200 rounded-xl font-bold font-mono text-slate-900"
                   />
                 </div>
+              </div>
+
+              <div>
+                <label className="block text-slate-600 mb-1 font-medium">Bono No Prestacional Fijo Mensual (COP)</label>
+                <div className="relative">
+                  <span className="absolute left-3 top-2 text-slate-400 font-mono">$</span>
+                  <input
+                    type="number"
+                    step="10000"
+                    value={nonSalaryBonus}
+                    onChange={e => setNonSalaryBonus(Number(e.target.value))}
+                    className="w-full pl-7 pr-3 py-2 bg-slate-50 border border-slate-200 rounded-xl font-bold font-mono text-slate-900"
+                  />
+                </div>
+                <p className="text-[10px] text-slate-400 mt-1">No es salario (Art. 128 CST). Se divide en 2 y se paga mitad en cada quincena.</p>
               </div>
 
               <div>
