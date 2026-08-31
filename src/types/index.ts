@@ -207,6 +207,7 @@ export interface Employee {
   activeContractId?: string;
   currentSalary: number;
   isTransportAllowanceEligible: boolean;
+  commissionEnabled?: boolean; // Recibe comisión del 10% sobre ventas
   
   // Saldo laboral / acumulados
   accruedVacationDays: number;

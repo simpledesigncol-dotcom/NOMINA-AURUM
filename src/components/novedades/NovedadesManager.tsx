@@ -78,14 +78,22 @@ export const NovedadesManager: React.FC<NovedadesManagerProps> = ({
       finalAmount = calculateOvertimeCost(overtimeType, quantity);
     }
 
+    // La opción UI 'COMISION' se resuelve a su tipo de nómina real:
+    // COMISION_SALARIAL (naturaleza salarial) o COMISION_NO_SALARIAL.
+    const resolvedType: string =
+      noveltyType === 'COMISION'
+        ? (isSalaryNature ? 'COMISION_SALARIAL' : 'COMISION_NO_SALARIAL')
+        : noveltyType;
+
     const newNov: Novedad = {
       id: `nov-${Date.now()}`,
       employeeId: selectedEmp.id,
       employeeName: `${selectedEmp.firstName} ${selectedEmp.lastName}`,
-      type: noveltyType,
+      type: resolvedType as NovedadType,
       overtimeType: (noveltyType === 'HORA_EXTRA' || noveltyType === 'RECARGO') ? overtimeType : undefined,
       quantity,
       amount: finalAmount,
+      calculatedValue: finalAmount,
       isSalaryNature,
       startDate,
       endDate: (noveltyType === 'INCAPACIDAD' || noveltyType === 'VACACIONES' || noveltyType === 'LICENCIA') ? endDate : undefined,

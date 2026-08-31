@@ -132,7 +132,7 @@ export const PayrollDashboard: React.FC<PayrollDashboardProps> = ({
             </span>
           </div>
           <p className="text-xs text-slate-600 mt-0.5">
-            Período: <span className="font-semibold text-slate-900">{currentPeriod.name}</span> ({currentPeriod.startDate} al {currentPeriod.endDate}) • Tipo: Mensual
+            Período: <span className="font-semibold text-slate-900">{currentPeriod.name}</span> ({currentPeriod.startDate} al {currentPeriod.endDate}) • Tipo: {currentPeriod.periodType}
           </p>
         </div>
 

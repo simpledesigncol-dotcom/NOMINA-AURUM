@@ -83,6 +83,7 @@ export const EmployeeOnboardingModal: React.FC<EmployeeOnboardingModalProps> = (
   const [contractType, setContractType] = useState<ContractType>('Término Indefinido');
   const [salary, setSalary] = useState<number>(2500000);
   const [isIntegralSalary, setIsIntegralSalary] = useState(false);
+  const [hasCommission, setHasCommission] = useState(false);
   const [modality, setModality] = useState<WorkModality>('Presencial');
   const [weeklyHours, setWeeklyHours] = useState<number>(44); // Ley 2101
   const [endDate, setEndDate] = useState('');
@@ -146,6 +147,7 @@ export const EmployeeOnboardingModal: React.FC<EmployeeOnboardingModalProps> = (
       riskClass,
       currentSalary: salary,
       isTransportAllowanceEligible: !isIntegralSalary && salary <= (smlmv * 2),
+      commissionEnabled: hasCommission,
       accruedVacationDays: 0,
       takenVacationDays: 0,
       compensatedVacationDays: 0,
@@ -547,6 +549,15 @@ export const EmployeeOnboardingModal: React.FC<EmployeeOnboardingModalProps> = (
                   <span className="text-[10px] text-slate-500 mt-1 block">
                     SMLMV 2026: ${smlmv.toLocaleString('es-CO')} • {salary <= (smlmv * 2) ? '✓ Con derecho a Auxilio de Transporte' : 'Sin auxilio de transporte (supera 2 SMLMV)'}
                   </span>
+                  <label className="mt-2 flex items-center gap-2 text-xs font-semibold text-slate-700 bg-neutral-50 border border-neutral-200 rounded-xl px-3 py-2 cursor-pointer">
+                    <input
+                      type="checkbox"
+                      checked={hasCommission}
+                      onChange={e => setHasCommission(e.target.checked)}
+                      className="w-4 h-4 accent-neutral-900"
+                    />
+                    Recibe comisión del 10% sobre ventas
+                  </label>
                 </div>
               </div>
 

@@ -13,6 +13,7 @@ import {
   INITIAL_DOTACION_DELIVERIES,
   INITIAL_SALARY_ADVANCES
 } from './data/initialData';
+import { periodEngine } from './services/periodEngine';
 import { loadAllFromSupabase, saveEmployee, saveContract, saveSalaryHistory, saveLoan, saveNovedad, savePayrollPeriod, savePayrollItems, saveAuditLog, saveDotacionDelivery, saveSalaryAdvance } from './lib/supabaseData';
 import { isSupabaseConfigured } from './lib/supabase';
 import { 
@@ -66,6 +67,13 @@ import {
 } from 'lucide-react';
 
 type ActiveView = 'EMPLEADOS' | 'NOMINA' | 'DOTACION' | 'ADELANTOS' | 'NOVEDADES' | 'REPORTES' | 'PERFIL_DETALLE';
+
+function getPeriodDays(period: PayrollPeriod): number {
+  const start = new Date(`${period.startDate}T12:00:00`);
+  const end = new Date(`${period.endDate}T12:00:00`);
+  const diff = Math.round((end.getTime() - start.getTime()) / 86400000) + 1;
+  return Math.max(1, diff);
+}
 
 export default function App() {
   // Global Application State
@@ -158,12 +166,13 @@ export default function App() {
   // Recalculate Payroll Engine for all active employees
   const handleRecalculatePayroll = () => {
     const activeEmps = employees.filter(e => e.state !== 'Retirado');
+    const periodDays = getPeriodDays(currentPeriod);
     const calculatedItems = activeEmps.map(emp => {
       const empNovedades = novedades.filter(n => n.employeeId === emp.id);
       const empLoans = loans.filter(l => l.employeeId === emp.id && l.status === 'Activo');
       return payrollCalculationEngine.calculateEmployeePayroll(
         emp,
-        30,
+        periodDays,
         empNovedades,
         empLoans,
         company
@@ -702,6 +711,9 @@ export default function App() {
               setCurrentPeriod(closed);
               savePayrollPeriod(closed);
               addAuditLog('CIERRE_PERIODO_NOMINA', 'Nómina', `Período ${currentPeriod.name} cerrado exitosamente.`);
+              const next = periodEngine.getNextPayrollPeriodInfo(currentPeriod).period;
+              setCurrentPeriod(next);
+              savePayrollPeriod(next);
             }}
           />
         )}

@@ -78,6 +78,7 @@ create table if not exists public.employees (
   active_contract_id text,
   current_salary numeric default 0,
   is_transport_allowance_eligible boolean default false,
+  commission_enabled boolean default false,
   accrued_vacation_days numeric default 0,
   taken_vacation_days numeric default 0,
   compensated_vacation_days numeric default 0,
@@ -390,3 +391,7 @@ begin
     );
   end loop;
 end $$;
+
+-- Migración: columna de comisión del 10% sobre ventas (idempotente)
+alter table if exists public.employees
+  add column if not exists commission_enabled boolean default false;

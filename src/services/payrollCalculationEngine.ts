@@ -383,6 +383,8 @@ export class PayrollCalculationEngine {
     // 16. Provisiones Prestacionales (Empresa)
     // Base para cesantías y prima = Devengados Salariales + Auxilio de transporte
     // Salario Integral no causa cesantías ni prima en nómina ordinaria (ya están incluidas en el 30% prestacional)
+    // Las tasas son mensuales; se escalan por el factor del período (periodDays/30) para quincenas.
+    const periodFactor = periodDays / 30;
     let severanceProvision = 0;
     let severanceInterestProvision = 0;
     let serviceBonusProvision = 0;
@@ -390,13 +392,13 @@ export class PayrollCalculationEngine {
 
     if (!isIntegral) {
       const baseForBenefits = totalSalaryAccruals + transportAllowance;
-      severanceProvision = Math.round(baseForBenefits * 0.08333); // 8.33%
-      severanceInterestProvision = Math.round(severanceProvision * 0.12 / 12); // 1.0% mensual
-      serviceBonusProvision = Math.round(baseForBenefits * 0.08333); // 8.33%
-      vacationProvision = Math.round(totalSalaryAccruals * 0.04167); // 4.17% (sin auxilio transporte)
+      severanceProvision = Math.round(baseForBenefits * 0.08333 * periodFactor); // 8.33% mensual
+      severanceInterestProvision = Math.round(severanceProvision * 0.12 / 12); // 1.0% mensual (proporcional)
+      serviceBonusProvision = Math.round(baseForBenefits * 0.08333 * periodFactor); // 8.33% mensual
+      vacationProvision = Math.round(totalSalaryAccruals * 0.04167 * periodFactor); // 4.17% mensual (sin auxilio transporte)
     } else {
       // Salario integral causa únicamente provisión de vacaciones
-      vacationProvision = Math.round(totalSalaryAccruals * 0.04167);
+      vacationProvision = Math.round(totalSalaryAccruals * 0.04167 * periodFactor);
     }
 
     const totalProvisions = severanceProvision + severanceInterestProvision + serviceBonusProvision + vacationProvision;

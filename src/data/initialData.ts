@@ -1,4 +1,5 @@
 import { Company, PayrollPeriod } from '../types';
+import { periodEngine } from '../services/periodEngine';
 
 // ============================================================
 // AURUM MOTORS - Configuración base
@@ -34,7 +35,7 @@ export const INITIAL_COMPANY: Company = {
   bankName: 'Bancolombia',
   bankAccountType: 'Corriente',
   bankAccountNumber: '310-892341-20',
-  paymentFrequency: 'Mensual',
+  paymentFrequency: 'Quincenal',
   weeklyWorkHours: 44,
 };
 
@@ -55,21 +56,7 @@ export const INITIAL_DOTACION_DELIVERIES = [];
 export const INITIAL_SALARY_ADVANCES = [];
 export const INITIAL_ALERTS = [];
 
-export const initialPayrollPeriod: PayrollPeriod = {
-  id: 'pp-current',
-  name: 'Período de Nómina',
-  year: new Date().getFullYear(),
-  month: new Date().getMonth() + 1,
-  periodType: 'Mensual',
-  startDate: `${new Date().getFullYear()}-${String(new Date().getMonth() + 1).padStart(2, '0')}-01`,
-  endDate: new Date().toISOString().split('T')[0],
-  paymentDate: new Date().toISOString().split('T')[0],
-  status: 'Borrador',
-  totalAccrued: 0,
-  totalDeductions: 0,
-  totalNetPay: 0,
-  totalEmployerCost: 0,
-};
+export const initialPayrollPeriod: PayrollPeriod = periodEngine.getCurrentPayrollPeriodInfo().period;
 
 export const initialCompany = INITIAL_COMPANY;
 export const initialEmployees = INITIAL_EMPLOYEES;
@@ -79,3 +66,4 @@ export const initialLoans = INITIAL_LOANS;
 export const initialNovedades = INITIAL_NOVEDADES;
 export const initialAuditLogs = INITIAL_AUDIT_LOGS;
 export const initialPayrollItems = [];
+export { periodEngine };
