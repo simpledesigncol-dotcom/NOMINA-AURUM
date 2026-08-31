@@ -790,7 +790,7 @@ export default function App() {
       <EmployeeOnboardingModal
         isOpen={showOnboardingModal}
         onClose={() => setShowOnboardingModal(false)}
-        onSave={handleSaveNewEmployee}
+        onSaveEmployee={handleSaveNewEmployee}
         company={company}
       />
 
@@ -800,7 +800,7 @@ export default function App() {
         employee={salaryChangeEmp}
         company={company}
         onClose={() => setSalaryChangeEmp(null)}
-        onSave={handleApplySalaryChange}
+        onApplyChange={handleApplySalaryChange}
       />
 
       {/* D. Termination Settlement Modal */}
