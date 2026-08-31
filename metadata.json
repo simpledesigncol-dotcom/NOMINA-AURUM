@@ -1,0 +1,6 @@
+{
+  "name": "Aurum Motors - Nómina & Gestión Laboral",
+  "description": "Sistema de gestión laboral, nómina electrónica, contratos Ley 2466, control de dotación y adelantos para Aurum Motors - Taller Especializado de Mecánica, Detailing y Latonería & Pintura.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
