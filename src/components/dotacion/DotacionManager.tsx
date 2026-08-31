@@ -15,7 +15,7 @@ import {
   Package,
   Wrench,
   Eye,
-  Sliders
+  SlidersVertical
 } from 'lucide-react';
 
 interface DotacionManagerProps {

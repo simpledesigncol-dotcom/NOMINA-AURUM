@@ -60,7 +60,7 @@ import {
   Wrench,
   ChevronRight,
   RefreshCw,
-  Sliders,
+  SlidersVertical,
   CircleCheckBig,
   Package
 } from 'lucide-react';
