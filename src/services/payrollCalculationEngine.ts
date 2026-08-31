@@ -12,7 +12,8 @@ export interface PayrollCalculationInput {
   employee: Employee;
   contract?: EmploymentContract;
   company: Company;
-  periodDays?: number; // default 30 para liquidación mensual estándar
+  periodDays?: number; // Divisor del salario mensual (por convención 30 días); default 30
+  paidDays?: number;   // Días efectivamente pagados en el período (p.ej. 15 o 16 en quincena)
   novedades: Novedad[];
   appliedSalary?: number; // Permite histórico de salario en la fecha
 }
@@ -20,7 +21,10 @@ export interface PayrollCalculationInput {
 export class PayrollCalculationEngine {
   public calculateItem(input: PayrollCalculationInput): PayrollItem {
     const { employee, contract, company, novedades } = input;
+    // Divisor mensual del salario: por convención 30 días.
     const periodDays = input.periodDays || 30;
+    // Días efectivamente pagados en este período (quincena: 15/16, o mes completo).
+    const paidDays = Math.max(1, input.paidDays ?? periodDays);
     const smlmv = legalRulesEngine.getSMLMV();
     const auxTransporteFull = legalRulesEngine.getAuxTransporte();
     const explanations: CalculationExplanationItem[] = [];
@@ -202,7 +206,7 @@ export class PayrollCalculationEngine {
     });
 
     // 7. Cálculo de tiempo trabajado y Salario Básico Proporcional
-    const workedDays = Math.max(0, periodDays - unpaidLeaveDays);
+    const workedDays = Math.max(0, paidDays - unpaidLeaveDays);
     const basicSalaryAccrued = Math.round((baseSalary / periodDays) * workedDays);
 
     explanations.push({
@@ -383,8 +387,8 @@ export class PayrollCalculationEngine {
     // 16. Provisiones Prestacionales (Empresa)
     // Base para cesantías y prima = Devengados Salariales + Auxilio de transporte
     // Salario Integral no causa cesantías ni prima en nómina ordinaria (ya están incluidas en el 30% prestacional)
-    // Las tasas son mensuales; se escalan por el factor del período (periodDays/30) para quincenas.
-    const periodFactor = periodDays / 30;
+    // Nota: el devengado base ya es proporcional al período (quincena = mitad del mes),
+    // por lo que aplicar la tasa mensual (8.33%, 4.17%) sobre esa base da la provisión correcta.
     let severanceProvision = 0;
     let severanceInterestProvision = 0;
     let serviceBonusProvision = 0;
@@ -392,13 +396,13 @@ export class PayrollCalculationEngine {
 
     if (!isIntegral) {
       const baseForBenefits = totalSalaryAccruals + transportAllowance;
-      severanceProvision = Math.round(baseForBenefits * 0.08333 * periodFactor); // 8.33% mensual
-      severanceInterestProvision = Math.round(severanceProvision * 0.12 / 12); // 1.0% mensual (proporcional)
-      serviceBonusProvision = Math.round(baseForBenefits * 0.08333 * periodFactor); // 8.33% mensual
-      vacationProvision = Math.round(totalSalaryAccruals * 0.04167 * periodFactor); // 4.17% mensual (sin auxilio transporte)
+      severanceProvision = Math.round(baseForBenefits * 0.08333); // 8.33% mensual
+      severanceInterestProvision = Math.round(severanceProvision * 0.12 / 12); // 1.0% mensual
+      serviceBonusProvision = Math.round(baseForBenefits * 0.08333); // 8.33% mensual
+      vacationProvision = Math.round(totalSalaryAccruals * 0.04167); // 4.17% mensual (sin auxilio transporte)
     } else {
       // Salario integral causa únicamente provisión de vacaciones
-      vacationProvision = Math.round(totalSalaryAccruals * 0.04167 * periodFactor);
+      vacationProvision = Math.round(totalSalaryAccruals * 0.04167);
     }
 
     const totalProvisions = severanceProvision + severanceInterestProvision + serviceBonusProvision + vacationProvision;
@@ -477,11 +481,13 @@ export class PayrollCalculationEngine {
     periodDays: number = 30,
     novedades: Novedad[] = [],
     loans: any[] = [],
-    company: Company
+    company: Company,
+    paidDays?: number
   ): PayrollItem {
     return this.calculateItem({
       employee,
       periodDays,
+      paidDays,
       novedades,
       company,
     });

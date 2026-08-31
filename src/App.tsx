@@ -185,16 +185,20 @@ export default function App() {
   // Recalculate Payroll Engine for all active employees
   const handleRecalculatePayroll = () => {
     const activeEmps = employees.filter(e => e.state !== 'Retirado');
-    const periodDays = getPeriodDays(currentPeriod);
+    const paidDays = getPeriodDays(currentPeriod); // días de la quincena (15/16) o del mes
+    // Divisor del salario = días reales del mes, para que la suma de las dos
+    // quincenas (15 + 16) cubra exactamente el salario mensual sin sobrepago.
+    const monthDivisor = periodEngine.lastDayOfMonth(currentPeriod.year, currentPeriod.month);
     const calculatedItems = activeEmps.map(emp => {
       const empNovedades = novedades.filter(n => n.employeeId === emp.id);
       const empLoans = loans.filter(l => l.employeeId === emp.id && l.status === 'Activo');
       const item = payrollCalculationEngine.calculateEmployeePayroll(
         emp,
-        periodDays,
+        monthDivisor,
         empNovedades,
         empLoans,
-        company
+        company,
+        paidDays
       );
       return { ...item, periodId: currentPeriod.id };
     });
