@@ -75,6 +75,22 @@ function getPeriodDays(period: PayrollPeriod): number {
   return Math.max(1, diff);
 }
 
+// Días efectivamente trabajados por el empleado en el período, considerando su
+// fecha de ingreso: si ingresó a mitad de quincena, se paga solo desde ese día
+// hasta el fin del período. Si ingresó antes del período, se paga el período completo.
+function getEffectivePaidDays(period: PayrollPeriod, hireDate?: string): number {
+  const start = new Date(`${period.startDate}T12:00:00`);
+  const end = new Date(`${period.endDate}T12:00:00`);
+  let effStart = start;
+  if (hireDate) {
+    const hd = new Date(`${hireDate}T12:00:00`);
+    if (hd > effStart) effStart = hd;
+  }
+  if (effStart > end) effStart = end;
+  const diff = Math.round((end.getTime() - effStart.getTime()) / 86400000) + 1;
+  return Math.max(1, diff);
+}
+
 export default function App() {
   // Global Application State
   const [company, setCompany] = useState<Company>(initialCompany);
@@ -185,20 +201,22 @@ export default function App() {
   // Recalculate Payroll Engine for all active employees
   const handleRecalculatePayroll = () => {
     const activeEmps = employees.filter(e => e.state !== 'Retirado');
-    const paidDays = getPeriodDays(currentPeriod); // días de la quincena (15/16) o del mes
     // Divisor del salario = días reales del mes, para que la suma de las dos
     // quincenas (15 + 16) cubra exactamente el salario mensual sin sobrepago.
     const monthDivisor = periodEngine.lastDayOfMonth(currentPeriod.year, currentPeriod.month);
     const calculatedItems = activeEmps.map(emp => {
       const empNovedades = novedades.filter(n => n.employeeId === emp.id);
       const empLoans = loans.filter(l => l.employeeId === emp.id && l.status === 'Activo');
+      // Prorrateo por fecha de ingreso: si entró a mitad de quincena, solo paga
+      // los días desde su ingreso hasta el fin del período.
+      const empPaidDays = getEffectivePaidDays(currentPeriod, emp.hireDate);
       const item = payrollCalculationEngine.calculateEmployeePayroll(
         emp,
         monthDivisor,
         empNovedades,
         empLoans,
         company,
-        paidDays
+        empPaidDays
       );
       return { ...item, periodId: currentPeriod.id };
     });
