@@ -201,10 +201,16 @@ export default function App() {
   // Save New Employee (from Onboarding Wizard)
   const handleSaveNewEmployee = (newEmployee: Employee, newContract: EmploymentContract) => {
     console.log('[App] handleSaveNewEmployee', newEmployee.id, newContract.id);
-    setEmployees(prev => [newEmployee, ...prev]);
-    setContracts(prev => [newContract, ...prev]);
-    saveEmployee(newEmployee);
-    saveContract(newContract);
+    try {
+      setEmployees(prev => [newEmployee, ...prev]);
+      setContracts(prev => [newContract, ...prev]);
+      saveEmployee(newEmployee);
+      saveContract(newContract);
+    } catch (err) {
+      console.error('[App] handleSaveNewEmployee error:', err);
+      if (err instanceof Error) console.error('Stack:', err.stack);
+      throw err;
+    }
 
     const initialSal: SalaryHistoryRecord = {
       id: `sh-${Date.now()}`,

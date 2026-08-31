@@ -169,6 +169,9 @@ export const EmployeeOnboardingModal: React.FC<EmployeeOnboardingModalProps> = (
       onSaveEmployee(newEmployee, newContract);
     } catch (err) {
       console.error('[Onboarding] Error al guardar empleado/contrato:', err);
+      if (err instanceof Error) {
+        console.error('Stack:', err.stack);
+      }
     }
     onClose();
   };
