@@ -145,9 +145,10 @@ export const EmployeeOnboardingModal: React.FC<EmployeeOnboardingModalProps> = (
       severanceFund,
       arl,
       riskClass,
-      currentSalary: salary,
-      isTransportAllowanceEligible: !isIntegralSalary && salary <= (smlmv * 2),
+      currentSalary: isIntegralSalary ? salary : smlmv, // Base = SMLMV (todos ganan el mínimo)
+      isTransportAllowanceEligible: !isIntegralSalary && smlmv <= (smlmv * 2),
       commissionEnabled: hasCommission,
+      nonSalaryBonus: isIntegralSalary ? 0 : Math.max(0, salary - smlmv), // Bono fijo: completa hasta el total pactado
       accruedVacationDays: 0,
       takenVacationDays: 0,
       compensatedVacationDays: 0,
@@ -538,7 +539,7 @@ export const EmployeeOnboardingModal: React.FC<EmployeeOnboardingModalProps> = (
                   </select>
                 </div>
                 <div>
-                  <label className="block font-semibold text-slate-600 mb-1">Salario Básico Mensual (COP) *</label>
+                  <label className="block font-semibold text-slate-600 mb-1">Salario Total Pactado (COP) *</label>
                   <input
                     type="number"
                     step="50000"
@@ -547,7 +548,10 @@ export const EmployeeOnboardingModal: React.FC<EmployeeOnboardingModalProps> = (
                     className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-xs font-mono font-bold text-slate-900"
                   />
                   <span className="text-[10px] text-slate-500 mt-1 block">
-                    SMLMV 2026: ${smlmv.toLocaleString('es-CO')} • {salary <= (smlmv * 2) ? '✓ Con derecho a Auxilio de Transporte' : 'Sin auxilio de transporte (supera 2 SMLMV)'}
+                    {isIntegralSalary
+                      ? `Salario Integral: 70% salarial / 30% prestacional (Art. 132 CST)`
+                      : `Base SMLMV 2026: $${smlmv.toLocaleString('es-CO')} + Bono No Prestacional Fijo: $${Math.max(0, salary - smlmv).toLocaleString('es-CO')} (Art. 128 CST)`
+                    }
                   </span>
                   <label className="mt-2 flex items-center gap-2 text-xs font-semibold text-slate-700 bg-neutral-50 border border-neutral-200 rounded-xl px-3 py-2 cursor-pointer">
                     <input

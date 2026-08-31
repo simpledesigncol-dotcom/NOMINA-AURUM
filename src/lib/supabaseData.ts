@@ -88,6 +88,7 @@ export async function saveEmployee(employee: Employee): Promise<void> {
     current_salary: employee.currentSalary,
     is_transport_allowance_eligible: employee.isTransportAllowanceEligible,
     commission_enabled: employee.commissionEnabled ?? false,
+    non_salary_bonus: employee.nonSalaryBonus ?? 0,
     accrued_vacation_days: employee.accruedVacationDays,
     taken_vacation_days: employee.takenVacationDays,
     compensated_vacation_days: employee.compensatedVacationDays,

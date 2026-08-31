@@ -246,6 +246,23 @@ export class PayrollCalculationEngine {
       });
     }
 
+    // Bono No Prestacional FIJO mensual (completa el salario hasta el total pactado).
+    // No constituye salario (Art. 128 CST): se paga proporcionalmente en cada quincena.
+    const fixedBonusProrated = isIntegral
+      ? 0
+      : Math.round((employee.nonSalaryBonus || 0) / periodDays * workedDays);
+    if (fixedBonusProrated > 0) {
+      nonSalaryBonuses += fixedBonusProrated;
+      explanations.push({
+        concept: 'Bono No Prestacional Fijo (Art. 128 CST)',
+        formula: `($${Math.round(employee.nonSalaryBonus || 0).toLocaleString('es-CO')} / ${periodDays} días) × ${workedDays} días (No constitutivo de salario)`,
+        baseAmount: employee.nonSalaryBonus || 0,
+        quantity: workedDays,
+        result: fixedBonusProrated,
+        legalBasis: 'CST Art. 128 / Ley 50 de 1990',
+      });
+    }
+
     const totalNonSalaryAccruals = Math.round(
       transportAllowance + 
       nonSalaryBonuses + 

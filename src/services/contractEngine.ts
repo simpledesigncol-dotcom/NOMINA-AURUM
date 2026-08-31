@@ -12,7 +12,8 @@ export class ContractEngineService {
     position: string,
     company: Company,
     hasCommission: boolean = false,
-    commissionRate: number = 0.10
+    commissionRate: number = 0.10,
+    nonSalaryBonus: number = 0
   ): { title: string; content: string }[] {
     const isFixed = contractType === 'Término Fijo';
     const isObra = contractType === 'Obra o Labor';
@@ -35,7 +36,7 @@ export class ContractEngineService {
         title: 'CLÁUSULA CUARTA — REMUNERACIÓN, PERIODICIDAD QUINCENAL Y AUXILIO DE TRANSPORTE',
         content: isIntegralSalary 
           ? `EL EMPLEADOR pagará a EL TRABAJADOR un Salario Integral mensual de $${salary.toLocaleString('es-CO')} COP, en el cual se encuentra integrado un factor salarial del 70% ($${Math.round(salary * 0.7).toLocaleString('es-CO')} COP) y un factor prestacional del 30% ($${Math.round(salary * 0.3).toLocaleString('es-CO')} COP). Conforme al Art. 132 del CST, este factor compensa de antemano el valor de prestaciones sociales, recargos nocturnos, dominicales y festivos ordinarios, cesantías y primas legales, quedando únicamente obligado el empleador al pago de vacaciones legales y aportes a la seguridad social y parafiscales sobre el 70% del ingreso.`
-          : `EL EMPLEADOR pagará a EL TRABAJADOR un salario básico mensual de $${salary.toLocaleString('es-CO')} COP, pagadero de manera vencida en períodos QUINCENALES: la primera quincena se liquidará pagando los días 1 al 15 de cada mes, con pago el día 15; y la segunda quincena se liquidará pagando los días 16 al último día del mes (30 o 31 según el mes), incluyéndose ese día final, con pago el último día hábil del mes. Adicionalmente, cuando el salario devengado no supere el equivalente a dos (2) Salarios Mínimos Legales Mensuales Vigentes (SMLMV), EL EMPLEADOR reconocerá y pagará el Auxilio Legal de Transporte en cada quincena conforme a la Ley 15 de 1959 y los decretos reglamentarios vigentes.`,
+          : `EL EMPLEADOR pagará a EL TRABAJADOR una remuneración mensual total pactada de $${salary.toLocaleString('es-CO')} COP, compuesta por un salario básico ordinario de $${Math.round(salary - nonSalaryBonus).toLocaleString('es-CO')} COP (equivalente a un (1) Salario Mínimo Legal Mensual Vigente) más un Bono No Prestacional FIJO de $${nonSalaryBonus.toLocaleString('es-CO')} COP, este último no constitutivo de salario conforme al Art. 128 del CST. Todo lo anterior se pagará de manera vencida en períodos QUINCENALES: la primera quincena se liquidará pagando los días 1 al 15 de cada mes, con pago el día 15; y la segunda quincena se liquidará pagando los días 16 al último día del mes (30 o 31 según el mes), incluyéndose ese día final, con pago el último día hábil del mes. Adicionalmente, cuando el salario básico devengado no supere el equivalente a dos (2) Salarios Mínimos Legales Mensuales Vigentes (SMLMV), EL EMPLEADOR reconocerá y pagará el Auxilio Legal de Transporte en cada quincena conforme a la Ley 15 de 1959 y los decretos reglamentarios vigentes.`,
       },
       ...(hasCommission ? [{
         title: 'CLÁUSULA QUINTA — COMISIÓN POR VENTAS DEL 10% (ART. 127 CST)',
@@ -133,7 +134,8 @@ export class ContractEngineService {
       customParams?.position || employee.position,
       company,
       employee.commissionEnabled === true,
-      0.10
+      0.10,
+      employee.nonSalaryBonus || 0
     );
 
     const isTransportEligible = !isIntegral && salary <= (1423500 * 2);

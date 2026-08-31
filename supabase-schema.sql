@@ -79,6 +79,7 @@ create table if not exists public.employees (
   current_salary numeric default 0,
   is_transport_allowance_eligible boolean default false,
   commission_enabled boolean default false,
+  non_salary_bonus numeric default 0,
   accrued_vacation_days numeric default 0,
   taken_vacation_days numeric default 0,
   compensated_vacation_days numeric default 0,
@@ -395,3 +396,7 @@ end $$;
 -- Migración: columna de comisión del 10% sobre ventas (idempotente)
 alter table if exists public.employees
   add column if not exists commission_enabled boolean default false;
+
+-- Migración: bono no prestacional fijo (completa el salario hasta el total pactado) (idempotente)
+alter table if exists public.employees
+  add column if not exists non_salary_bonus numeric default 0;

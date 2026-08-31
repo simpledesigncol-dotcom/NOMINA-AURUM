@@ -208,6 +208,7 @@ export interface Employee {
   currentSalary: number;
   isTransportAllowanceEligible: boolean;
   commissionEnabled?: boolean; // Recibe comisión del 10% sobre ventas
+  nonSalaryBonus?: number; // Bono no prestacional FIJO mensual (completa el salario hasta el total pactado)
   
   // Saldo laboral / acumulados
   accruedVacationDays: number;
