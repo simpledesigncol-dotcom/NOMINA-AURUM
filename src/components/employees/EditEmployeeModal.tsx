@@ -242,7 +242,7 @@ const EditEmployeeModalContent: React.FC<EditEmployeeModalContentProps> = ({
                     className="w-full pl-7 pr-3 py-2 bg-slate-50 border border-slate-200 rounded-xl font-bold font-mono text-slate-900"
                   />
                 </div>
-                <p className="text-[10px] text-slate-400 mt-1">No es salario (Art. 128 CST). Se divide en 2 y se paga mitad en cada quincena.</p>
+                <p className="text-[10px] text-slate-400 mt-1">No es salario (Art. 128 CST). Se prorratea igual que el salario: si no trabaja un día, ese día se descuenta.</p>
               </div>
 
               <div>
