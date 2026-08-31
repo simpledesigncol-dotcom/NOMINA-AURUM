@@ -82,12 +82,12 @@ export const SalaryAdvancesManager: React.FC<SalaryAdvancesManagerProps> = ({
       {/* Header Banner */}
       <div className="bg-white/80 backdrop-blur-xl border border-slate-200/80 rounded-3xl p-6 shadow-xs flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div className="flex items-center gap-4">
-          <div className="w-14 h-14 rounded-2xl bg-emerald-500/10 text-emerald-600 flex items-center justify-center shadow-inner">
+          <div className="w-14 h-14 rounded-2xl bg-neutral-700/10 text-neutral-800 flex items-center justify-center shadow-inner">
             <Banknote className="w-7 h-7" />
           </div>
           <div>
             <div className="flex items-center gap-2">
-              <span className="text-xs font-semibold uppercase tracking-wider text-emerald-600">Tesorería & Beneficios</span>
+              <span className="text-xs font-semibold uppercase tracking-wider text-neutral-800">Tesorería & Beneficios</span>
               <span className="px-2 py-0.5 bg-blue-100 text-blue-800 text-[10px] font-semibold rounded-full">Descuento en Nómina</span>
             </div>
             <h1 className="text-xl font-bold text-slate-900">Adelantos de Quincena & Préstamos de Taller</h1>
@@ -123,7 +123,7 @@ export const SalaryAdvancesManager: React.FC<SalaryAdvancesManagerProps> = ({
             onClick={() => setActiveTab('NEW_ADVANCE')}
             className={`px-4 py-2 text-xs font-semibold rounded-xl transition-all ${
               activeTab === 'NEW_ADVANCE'
-                ? 'bg-emerald-600 text-white shadow-xs'
+                ? 'bg-neutral-800 text-white shadow-xs'
                 : 'text-slate-600 hover:text-slate-900'
             }`}
           >
@@ -137,7 +137,7 @@ export const SalaryAdvancesManager: React.FC<SalaryAdvancesManagerProps> = ({
         <div className="bg-white/90 backdrop-blur-md p-5 rounded-2xl border border-slate-200/80 shadow-2xs">
           <div className="flex items-center justify-between text-slate-500 text-xs mb-1 font-medium">
             <span>Total Adelantos por Descontar (Agosto)</span>
-            <ArrowDownRight className="w-4 h-4 text-emerald-600" />
+            <ArrowDownRight className="w-4 h-4 text-neutral-800" />
           </div>
           <p className="text-xl font-extrabold text-slate-900">
             ${totalActiveAdvances.toLocaleString('es-CO')} COP
@@ -159,12 +159,12 @@ export const SalaryAdvancesManager: React.FC<SalaryAdvancesManagerProps> = ({
         <div className="bg-white/90 backdrop-blur-md p-5 rounded-2xl border border-slate-200/80 shadow-2xs">
           <div className="flex items-center justify-between text-slate-500 text-xs mb-1 font-medium">
             <span>Límite Máximo de Endeudamiento</span>
-            <ShieldAlert className="w-4 h-4 text-amber-600" />
+            <ShieldAlert className="w-4 h-4 text-neutral-800" />
           </div>
           <p className="text-xl font-extrabold text-slate-900">
             50% Salario
           </p>
-          <p className="text-[10px] text-amber-700 font-medium mt-1">Conforme a la protección del mínimo vital (Art. 149 CST)</p>
+          <p className="text-[10px] text-neutral-900 font-medium mt-1">Conforme a la protección del mínimo vital (Art. 149 CST)</p>
         </div>
       </div>
 
@@ -173,12 +173,12 @@ export const SalaryAdvancesManager: React.FC<SalaryAdvancesManagerProps> = ({
         <div className="bg-white/90 backdrop-blur-xl rounded-3xl border border-slate-200/80 p-5 shadow-xs space-y-4">
           <div className="flex items-center justify-between">
             <h2 className="text-sm font-bold text-slate-900 flex items-center gap-2">
-              <DollarSign className="w-4 h-4 text-emerald-600" />
+              <DollarSign className="w-4 h-4 text-neutral-800" />
               Solicitudes y Anticipos Salariales Registrados
             </h2>
             <button
               onClick={() => setActiveTab('NEW_ADVANCE')}
-              className="text-xs font-semibold text-emerald-600 hover:text-emerald-700 flex items-center gap-1"
+              className="text-xs font-semibold text-neutral-800 hover:text-neutral-900 flex items-center gap-1"
             >
               <Plus className="w-3.5 h-3.5" /> Registrar Adelanto
             </button>
@@ -188,7 +188,7 @@ export const SalaryAdvancesManager: React.FC<SalaryAdvancesManagerProps> = ({
             {advances.map(adv => (
               <div 
                 key={adv.id}
-                className="bg-slate-50/70 border border-slate-200/80 rounded-2xl p-4.5 flex flex-col justify-between hover:border-emerald-400 hover:shadow-xs transition-all"
+                className="bg-slate-50/70 border border-slate-200/80 rounded-2xl p-4.5 flex flex-col justify-between hover:border-neutral-600 hover:shadow-xs transition-all"
               >
                 <div className="space-y-3">
                   <div className="flex items-start justify-between">
@@ -198,10 +198,10 @@ export const SalaryAdvancesManager: React.FC<SalaryAdvancesManagerProps> = ({
                     </div>
                     <span className={`px-2.5 py-1 text-[10px] font-bold rounded-full ${
                       adv.status === 'Aprobado' || adv.status === 'Desembolsado'
-                        ? 'bg-emerald-100 text-emerald-800'
+                        ? 'bg-neutral-100 text-neutral-900'
                         : adv.status === 'Descontado'
                         ? 'bg-blue-100 text-blue-800'
-                        : 'bg-amber-100 text-amber-800'
+                        : 'bg-neutral-200 text-neutral-900'
                     }`}>
                       {adv.status}
                     </span>
@@ -210,7 +210,7 @@ export const SalaryAdvancesManager: React.FC<SalaryAdvancesManagerProps> = ({
                   <div className="bg-white p-3.5 rounded-xl border border-slate-200/60 flex items-center justify-between">
                     <div>
                       <span className="text-[10px] text-slate-400 block font-medium">Monto del Anticipo:</span>
-                      <span className="text-base font-extrabold text-emerald-600 font-mono">
+                      <span className="text-base font-extrabold text-neutral-800 font-mono">
                         ${adv.amount.toLocaleString('es-CO')} COP
                       </span>
                     </div>
@@ -231,7 +231,7 @@ export const SalaryAdvancesManager: React.FC<SalaryAdvancesManagerProps> = ({
                   {adv.status === 'Aprobado' && (
                     <button
                       onClick={() => onUpdateAdvanceStatus(adv.id, 'Descontado')}
-                      className="px-3 py-1 bg-emerald-50 text-emerald-700 hover:bg-emerald-100 border border-emerald-200 rounded-xl text-[11px] font-semibold transition-colors"
+                      className="px-3 py-1 bg-neutral-50 text-neutral-900 hover:bg-neutral-100 border border-neutral-200 rounded-xl text-[11px] font-semibold transition-colors"
                     >
                       Marcar Descontado
                     </button>
@@ -273,7 +273,7 @@ export const SalaryAdvancesManager: React.FC<SalaryAdvancesManagerProps> = ({
                   </div>
                   <div className="flex justify-between text-slate-600">
                     <span>Saldo Pendiente:</span>
-                    <strong className="text-emerald-700 font-bold">${(loan.balance ?? 0).toLocaleString('es-CO')} COP</strong>
+                    <strong className="text-neutral-900 font-bold">${(loan.balance ?? 0).toLocaleString('es-CO')} COP</strong>
                   </div>
                   <div className="flex justify-between text-slate-600">
                     <span>Cuota Mensual a Descontar:</span>
@@ -327,7 +327,7 @@ export const SalaryAdvancesManager: React.FC<SalaryAdvancesManagerProps> = ({
                     setAmount(Math.min(amount, Math.round(emp.currentSalary * 0.5)));
                   }
                 }}
-                className="w-full p-2.5 bg-slate-50 border border-slate-300 rounded-xl text-xs font-medium focus:ring-2 focus:ring-emerald-500"
+                className="w-full p-2.5 bg-slate-50 border border-slate-300 rounded-xl text-xs font-medium focus:ring-2 focus:ring-neutral-700"
               >
                 {employees.map(e => (
                   <option key={e.id} value={e.id}>
@@ -346,7 +346,7 @@ export const SalaryAdvancesManager: React.FC<SalaryAdvancesManagerProps> = ({
                 step={50000}
                 value={amount}
                 onChange={e => setAmount(Number(e.target.value))}
-                className="w-full p-2.5 bg-slate-50 border border-slate-300 rounded-xl text-xs font-bold text-slate-900 focus:ring-2 focus:ring-emerald-500"
+                className="w-full p-2.5 bg-slate-50 border border-slate-300 rounded-xl text-xs font-bold text-slate-900 focus:ring-2 focus:ring-neutral-700"
               />
               <p className="text-[10px] text-slate-400 mt-1">
                 Límite legal sugerido (50% salario): <strong>${maxAllowed.toLocaleString('es-CO')} COP</strong>
@@ -360,7 +360,7 @@ export const SalaryAdvancesManager: React.FC<SalaryAdvancesManagerProps> = ({
               <select
                 value={reason}
                 onChange={e => setReason(e.target.value)}
-                className="w-full p-2.5 bg-slate-50 border border-slate-300 rounded-xl text-xs font-medium focus:ring-2 focus:ring-emerald-500"
+                className="w-full p-2.5 bg-slate-50 border border-slate-300 rounded-xl text-xs font-medium focus:ring-2 focus:ring-neutral-700"
               >
                 <option value="Adelanto de quincena ordinario">Adelanto de quincena ordinario</option>
                 <option value="Calamidad doméstica comprobada">Calamidad doméstica comprobada</option>
@@ -375,7 +375,7 @@ export const SalaryAdvancesManager: React.FC<SalaryAdvancesManagerProps> = ({
               <select
                 value={disbursedVia}
                 onChange={e => setDisbursedVia(e.target.value as any)}
-                className="w-full p-2.5 bg-slate-50 border border-slate-300 rounded-xl text-xs font-medium focus:ring-2 focus:ring-emerald-500"
+                className="w-full p-2.5 bg-slate-50 border border-slate-300 rounded-xl text-xs font-medium focus:ring-2 focus:ring-neutral-700"
               >
                 <option value="Transferencia Bancolombia">Transferencia Bancolombia</option>
                 <option value="DaviPlata">DaviPlata</option>
@@ -388,7 +388,7 @@ export const SalaryAdvancesManager: React.FC<SalaryAdvancesManagerProps> = ({
               <select
                 value={deductPeriodId}
                 onChange={e => setDeductPeriodId(e.target.value)}
-                className="w-full p-2.5 bg-slate-50 border border-slate-300 rounded-xl text-xs font-medium focus:ring-2 focus:ring-emerald-500"
+                className="w-full p-2.5 bg-slate-50 border border-slate-300 rounded-xl text-xs font-medium focus:ring-2 focus:ring-neutral-700"
               >
                 <option value="2026-08">Nómina Agosto 2026</option>
                 <option value="2026-09">Nómina Septiembre 2026</option>
@@ -406,7 +406,7 @@ export const SalaryAdvancesManager: React.FC<SalaryAdvancesManagerProps> = ({
             </button>
             <button
               type="submit"
-              className="px-6 py-2.5 bg-emerald-600 hover:bg-emerald-700 text-white rounded-2xl text-xs font-bold shadow-xs transition-colors"
+              className="px-6 py-2.5 bg-neutral-800 hover:bg-neutral-900 text-white rounded-2xl text-xs font-bold shadow-xs transition-colors"
             >
               Aprobar y Registrar Adelanto
             </button>

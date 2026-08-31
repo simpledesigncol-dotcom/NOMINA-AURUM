@@ -90,13 +90,13 @@ export const DotacionManager: React.FC<DotacionManagerProps> = ({
       {/* iOS Header Banner */}
       <div className="bg-white/80 backdrop-blur-xl border border-slate-200/80 rounded-3xl p-6 shadow-xs flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div className="flex items-center gap-4">
-          <div className="w-14 h-14 rounded-2xl bg-amber-500/10 text-amber-600 flex items-center justify-center shadow-inner">
+          <div className="w-14 h-14 rounded-2xl bg-neutral-700/10 text-neutral-800 flex items-center justify-center shadow-inner">
             <Shirt className="w-7 h-7" />
           </div>
           <div>
             <div className="flex items-center gap-2">
-              <span className="text-xs font-semibold uppercase tracking-wider text-amber-600">SG-SST & Art. 230-234 CST</span>
-              <span className="px-2 py-0.5 bg-emerald-100 text-emerald-800 text-[10px] font-semibold rounded-full">Ley Colombiana</span>
+              <span className="text-xs font-semibold uppercase tracking-wider text-neutral-800">SG-SST & Art. 230-234 CST</span>
+              <span className="px-2 py-0.5 bg-neutral-100 text-neutral-900 text-[10px] font-semibold rounded-full">Ley Colombiana</span>
             </div>
             <h1 className="text-xl font-bold text-slate-900">Control de Dotación & EPP de Taller</h1>
             <p className="text-xs text-slate-500 mt-0.5">
@@ -131,7 +131,7 @@ export const DotacionManager: React.FC<DotacionManagerProps> = ({
             onClick={() => setActiveTab('NEW_DELIVERY')}
             className={`px-4 py-2 text-xs font-semibold rounded-xl transition-all ${
               activeTab === 'NEW_DELIVERY'
-                ? 'bg-amber-600 text-white shadow-xs'
+                ? 'bg-neutral-800 text-white shadow-xs'
                 : 'text-slate-600 hover:text-slate-900'
             }`}
           >
@@ -149,18 +149,18 @@ export const DotacionManager: React.FC<DotacionManagerProps> = ({
           <div>
             <p className="text-[11px] text-slate-500 font-medium">Primera Entrega Legal</p>
             <p className="text-sm font-bold text-slate-900">30 de Abril</p>
-            <span className="text-[10px] text-emerald-600 font-medium">Cumplida 2026 ✓</span>
+            <span className="text-[10px] text-neutral-800 font-medium">Cumplida 2026 ✓</span>
           </div>
         </div>
 
-        <div className="bg-amber-50/70 border border-amber-200/80 p-4 rounded-2xl shadow-2xs flex items-center gap-3">
-          <div className="w-10 h-10 rounded-xl bg-amber-500 text-white flex items-center justify-center font-bold text-xs shadow-xs">
+        <div className="bg-neutral-100/70 border border-neutral-300/80 p-4 rounded-2xl shadow-2xs flex items-center gap-3">
+          <div className="w-10 h-10 rounded-xl bg-neutral-700 text-white flex items-center justify-center font-bold text-xs shadow-xs">
             2ª
           </div>
           <div>
-            <p className="text-[11px] text-amber-700 font-medium">Segunda Entrega Legal</p>
-            <p className="text-sm font-bold text-amber-950">31 de Agosto</p>
-            <span className="text-[10px] text-amber-700 font-semibold">Período Actual — En Curso</span>
+            <p className="text-[11px] text-neutral-900 font-medium">Segunda Entrega Legal</p>
+            <p className="text-sm font-bold text-neutral-950">31 de Agosto</p>
+            <span className="text-[10px] text-neutral-900 font-semibold">Período Actual — En Curso</span>
           </div>
         </div>
 
@@ -181,12 +181,12 @@ export const DotacionManager: React.FC<DotacionManagerProps> = ({
         <div className="bg-white/90 backdrop-blur-xl rounded-3xl border border-slate-200/80 p-5 shadow-xs space-y-4">
           <div className="flex items-center justify-between">
             <h2 className="text-sm font-bold text-slate-900 flex items-center gap-2">
-              <Package className="w-4 h-4 text-amber-600" />
+              <Package className="w-4 h-4 text-neutral-800" />
               Actas de Entrega de Dotación & EPP Registradas ({dotacionDeliveries.length})
             </h2>
             <button
               onClick={() => setActiveTab('NEW_DELIVERY')}
-              className="text-xs font-semibold text-amber-600 hover:text-amber-700 flex items-center gap-1"
+              className="text-xs font-semibold text-neutral-800 hover:text-neutral-900 flex items-center gap-1"
             >
               <Plus className="w-3.5 h-3.5" /> Registrar Nueva
             </button>
@@ -198,18 +198,18 @@ export const DotacionManager: React.FC<DotacionManagerProps> = ({
               return (
                 <div 
                   key={delivery.id}
-                  className="bg-slate-50/70 border border-slate-200/80 rounded-2xl p-4.5 flex flex-col justify-between hover:border-amber-400 hover:shadow-xs transition-all group"
+                  className="bg-slate-50/70 border border-slate-200/80 rounded-2xl p-4.5 flex flex-col justify-between hover:border-neutral-500 hover:shadow-xs transition-all group"
                 >
                   <div className="space-y-2.5">
                     <div className="flex items-start justify-between">
                       <div>
                         <span className="text-[10px] font-mono text-slate-400 uppercase">{delivery.actNumber}</span>
-                        <h3 className="text-sm font-bold text-slate-900 group-hover:text-amber-700 transition-colors">
+                        <h3 className="text-sm font-bold text-slate-900 group-hover:text-neutral-900 transition-colors">
                           {delivery.employeeName}
                         </h3>
                         <p className="text-xs text-slate-500">{emp?.position || 'Especialista de Taller'}</p>
                       </div>
-                      <span className="px-2.5 py-1 bg-emerald-100/80 text-emerald-800 text-[10px] font-bold rounded-full">
+                      <span className="px-2.5 py-1 bg-neutral-100/80 text-neutral-900 text-[10px] font-bold rounded-full">
                         {delivery.status}
                       </span>
                     </div>
@@ -225,7 +225,7 @@ export const DotacionManager: React.FC<DotacionManagerProps> = ({
                       </div>
                       <div className="flex justify-between text-slate-600">
                         <span>Talla Overol / Calzado:</span>
-                        <strong className="text-amber-700 font-mono">{delivery.overolSize} / {delivery.shoeSize}</strong>
+                        <strong className="text-neutral-900 font-mono">{delivery.overolSize} / {delivery.shoeSize}</strong>
                       </div>
                       <div className="flex justify-between text-slate-600">
                         <span>Elementos entregados:</span>
@@ -242,9 +242,9 @@ export const DotacionManager: React.FC<DotacionManagerProps> = ({
                     <span className="text-[10px] text-slate-400">Entregado por: {delivery.deliveredBy.split('(')[0]}</span>
                     <button
                       onClick={() => emp && onOpenDotacionDoc(delivery, emp)}
-                      className="inline-flex items-center gap-1 px-3 py-1.5 bg-white border border-slate-300 hover:bg-amber-50 hover:border-amber-300 text-slate-700 hover:text-amber-800 text-xs font-semibold rounded-xl shadow-2xs transition-colors"
+                      className="inline-flex items-center gap-1 px-3 py-1.5 bg-white border border-slate-300 hover:bg-neutral-100 hover:border-neutral-400 text-slate-700 hover:text-neutral-900 text-xs font-semibold rounded-xl shadow-2xs transition-colors"
                     >
-                      <Printer className="w-3.5 h-3.5 text-amber-600" />
+                      <Printer className="w-3.5 h-3.5 text-neutral-800" />
                       Acta Oficial
                     </button>
                   </div>
@@ -286,7 +286,7 @@ export const DotacionManager: React.FC<DotacionManagerProps> = ({
                     </td>
                     <td className="py-3.5 px-3">
                       <div className="text-slate-800 font-medium">{emp.position}</div>
-                      <div className="text-[10px] text-amber-600">{emp.workshopSpecialty || emp.department}</div>
+                      <div className="text-[10px] text-neutral-800">{emp.workshopSpecialty || emp.department}</div>
                     </td>
                     <td className="py-3.5 px-3">
                       <span className="px-2.5 py-1 bg-slate-100 border border-slate-200 rounded-lg font-mono font-bold text-slate-800">
@@ -305,7 +305,7 @@ export const DotacionManager: React.FC<DotacionManagerProps> = ({
                     </td>
                     <td className="py-3.5 px-3">
                       {emp.currentSalary <= (1423500 * 2) ? (
-                        <span className="px-2 py-0.5 bg-emerald-100 text-emerald-800 text-[10px] font-semibold rounded-full">
+                        <span className="px-2 py-0.5 bg-neutral-100 text-neutral-900 text-[10px] font-semibold rounded-full">
                           Obligatoria (Art. 230 CST)
                         </span>
                       ) : (
@@ -345,7 +345,7 @@ export const DotacionManager: React.FC<DotacionManagerProps> = ({
               <select
                 value={selectedEmpId}
                 onChange={e => setSelectedEmpId(e.target.value)}
-                className="w-full p-2.5 bg-slate-50 border border-slate-300 rounded-xl text-xs font-medium focus:ring-2 focus:ring-amber-500"
+                className="w-full p-2.5 bg-slate-50 border border-slate-300 rounded-xl text-xs font-medium focus:ring-2 focus:ring-neutral-700"
               >
                 {employees.map(e => (
                   <option key={e.id} value={e.id}>
@@ -360,7 +360,7 @@ export const DotacionManager: React.FC<DotacionManagerProps> = ({
               <select
                 value={periodLabel}
                 onChange={e => setPeriodLabel(e.target.value as any)}
-                className="w-full p-2.5 bg-slate-50 border border-slate-300 rounded-xl text-xs font-medium focus:ring-2 focus:ring-amber-500"
+                className="w-full p-2.5 bg-slate-50 border border-slate-300 rounded-xl text-xs font-medium focus:ring-2 focus:ring-neutral-700"
               >
                 <option value="Primera Entrega (Abril 30)">Primera Entrega (Abril 30)</option>
                 <option value="Segunda Entrega (Agosto 31)">Segunda Entrega (Agosto 31)</option>
@@ -375,7 +375,7 @@ export const DotacionManager: React.FC<DotacionManagerProps> = ({
                 type="date"
                 value={deliveryDate}
                 onChange={e => setDeliveryDate(e.target.value)}
-                className="w-full p-2.5 bg-slate-50 border border-slate-300 rounded-xl text-xs font-medium focus:ring-2 focus:ring-amber-500"
+                className="w-full p-2.5 bg-slate-50 border border-slate-300 rounded-xl text-xs font-medium focus:ring-2 focus:ring-neutral-700"
               />
             </div>
           </div>
@@ -390,7 +390,7 @@ export const DotacionManager: React.FC<DotacionManagerProps> = ({
               {items.map((item, index) => (
                 <div key={item.id} className="p-3 bg-slate-50 border border-slate-200/80 rounded-2xl flex items-center justify-between text-xs">
                   <div className="flex items-center gap-2.5">
-                    <div className="w-8 h-8 rounded-xl bg-amber-100 text-amber-700 flex items-center justify-center font-bold">
+                    <div className="w-8 h-8 rounded-xl bg-neutral-200 text-neutral-900 flex items-center justify-center font-bold">
                       {index + 1}
                     </div>
                     <div>
@@ -415,7 +415,7 @@ export const DotacionManager: React.FC<DotacionManagerProps> = ({
                 type="text"
                 value={deliveredBy}
                 onChange={e => setDeliveredBy(e.target.value)}
-                className="w-full p-2.5 bg-slate-50 border border-slate-300 rounded-xl text-xs font-medium focus:ring-2 focus:ring-amber-500"
+                className="w-full p-2.5 bg-slate-50 border border-slate-300 rounded-xl text-xs font-medium focus:ring-2 focus:ring-neutral-700"
               />
             </div>
 
@@ -425,7 +425,7 @@ export const DotacionManager: React.FC<DotacionManagerProps> = ({
                 type="text"
                 value={notes}
                 onChange={e => setNotes(e.target.value)}
-                className="w-full p-2.5 bg-slate-50 border border-slate-300 rounded-xl text-xs font-medium focus:ring-2 focus:ring-amber-500"
+                className="w-full p-2.5 bg-slate-50 border border-slate-300 rounded-xl text-xs font-medium focus:ring-2 focus:ring-neutral-700"
               />
             </div>
           </div>
@@ -440,7 +440,7 @@ export const DotacionManager: React.FC<DotacionManagerProps> = ({
             </button>
             <button
               type="submit"
-              className="px-6 py-2.5 bg-amber-600 hover:bg-amber-700 text-white rounded-2xl text-xs font-bold shadow-xs transition-colors"
+              className="px-6 py-2.5 bg-neutral-800 hover:bg-neutral-900 text-white rounded-2xl text-xs font-bold shadow-xs transition-colors"
             >
               Guardar Entrega y Generar Acta
             </button>

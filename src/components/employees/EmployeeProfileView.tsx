@@ -101,7 +101,7 @@ export const EmployeeProfileView: React.FC<EmployeeProfileViewProps> = ({
           {/* CRITICAL: Edit Hire Date & Profile */}
           <button
             onClick={() => onOpenEditEmployee(employee)}
-            className="inline-flex items-center gap-1.5 px-3.5 py-2 bg-amber-500 hover:bg-amber-600 text-white text-xs font-bold rounded-xl shadow-xs transition-colors"
+            className="inline-flex items-center gap-1.5 px-3.5 py-2 bg-neutral-700 hover:bg-neutral-800 text-white text-xs font-bold rounded-xl shadow-xs transition-colors"
           >
             <Edit3 className="w-3.5 h-3.5" />
             Editar Datos & Fecha Contratación
@@ -111,7 +111,7 @@ export const EmployeeProfileView: React.FC<EmployeeProfileViewProps> = ({
             onClick={() => onOpenCertificateDoc(employee)}
             className="inline-flex items-center gap-1.5 px-3 py-2 bg-white border border-slate-200/80 hover:bg-slate-50 text-slate-700 text-xs font-semibold rounded-xl shadow-2xs transition-colors"
           >
-            <FileCheck className="w-3.5 h-3.5 text-emerald-600" />
+            <FileCheck className="w-3.5 h-3.5 text-neutral-800" />
             Certificado Laboral
           </button>
           
@@ -138,7 +138,7 @@ export const EmployeeProfileView: React.FC<EmployeeProfileViewProps> = ({
       {/* Hero Profile Card - iOS Style */}
       <div className="bg-white/90 backdrop-blur-xl rounded-3xl border border-slate-200/80 shadow-xs p-6 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
         <div className="flex items-center gap-4">
-          <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-amber-500 to-amber-700 text-white flex items-center justify-center font-extrabold text-xl shadow-md border border-amber-400/50">
+          <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-neutral-700 to-neutral-900 text-white flex items-center justify-center font-extrabold text-xl shadow-md border border-neutral-500/50">
             {employee.firstName.charAt(0)}{employee.lastName.charAt(0)}
           </div>
           <div>
@@ -147,9 +147,9 @@ export const EmployeeProfileView: React.FC<EmployeeProfileViewProps> = ({
                 {employee.firstName} {employee.lastName}
               </h1>
               <span className={`px-2.5 py-0.5 rounded-full text-[11px] font-bold ${
-                employee.state === 'Activo' ? 'bg-emerald-100 text-emerald-800' :
+                employee.state === 'Activo' ? 'bg-neutral-100 text-neutral-900' :
                 employee.state === 'Vacaciones' ? 'bg-blue-100 text-blue-800' :
-                employee.state === 'Incapacidad' ? 'bg-amber-100 text-amber-800' :
+                employee.state === 'Incapacidad' ? 'bg-neutral-200 text-neutral-900' :
                 'bg-slate-100 text-slate-700'
               }`}>
                 {employee.state}
@@ -158,7 +158,7 @@ export const EmployeeProfileView: React.FC<EmployeeProfileViewProps> = ({
             <p className="text-xs text-slate-600 mt-1 flex flex-wrap items-center gap-2">
               <span className="font-semibold text-slate-900">{employee.position}</span>
               <span>•</span>
-              <span className="text-amber-700 font-medium">{employee.workshopSpecialty || employee.department}</span>
+              <span className="text-neutral-900 font-medium">{employee.workshopSpecialty || employee.department}</span>
               <span>•</span>
               <span className="font-mono text-slate-400 bg-slate-100 px-2 py-0.5 rounded-md">{employee.code}</span>
             </p>
@@ -166,7 +166,7 @@ export const EmployeeProfileView: React.FC<EmployeeProfileViewProps> = ({
               <span>{employee.documentType} {employee.documentNumber}</span>
               <span>•</span>
               <span className="font-semibold text-slate-800 flex items-center gap-1">
-                <Calendar className="w-3 h-3 text-amber-600" />
+                <Calendar className="w-3 h-3 text-neutral-800" />
                 Ingreso: {employee.hireDate}
               </span>
             </p>
@@ -185,11 +185,11 @@ export const EmployeeProfileView: React.FC<EmployeeProfileViewProps> = ({
           </div>
           <div>
             <span className="text-slate-400 block text-[11px] font-medium">Vacaciones Pend.</span>
-            <span className="font-bold text-emerald-700 font-mono">{employee.accruedVacationDays - employee.takenVacationDays} Días</span>
+            <span className="font-bold text-neutral-900 font-mono">{employee.accruedVacationDays - employee.takenVacationDays} Días</span>
           </div>
           <div>
             <span className="text-slate-400 block text-[11px] font-medium">Dotación (Calzado/Overol)</span>
-            <span className="font-bold text-amber-700 font-mono">{employee.dotacionSizes?.shoeSize || '41'} / {employee.dotacionSizes?.overolSize || 'L'}</span>
+            <span className="font-bold text-neutral-900 font-mono">{employee.dotacionSizes?.shoeSize || '41'} / {employee.dotacionSizes?.overolSize || 'L'}</span>
           </div>
         </div>
       </div>
@@ -247,13 +247,13 @@ export const EmployeeProfileView: React.FC<EmployeeProfileViewProps> = ({
             <div className="bg-white/90 backdrop-blur-xl rounded-3xl border border-slate-200/80 p-5 space-y-4 shadow-2xs">
               <div className="flex items-center justify-between">
                 <h3 className="font-bold text-xs text-slate-900 uppercase tracking-wide flex items-center gap-2">
-                  <FileText className="w-4 h-4 text-amber-600" />
+                  <FileText className="w-4 h-4 text-neutral-800" />
                   Contrato de Trabajo Aurum Motors
                 </h3>
                 {contract && (
                   <button
                     onClick={() => onOpenContractDoc(employee, contract)}
-                    className="text-xs text-amber-700 hover:text-amber-800 font-semibold inline-flex items-center gap-1"
+                    className="text-xs text-neutral-900 hover:text-neutral-900 font-semibold inline-flex items-center gap-1"
                   >
                     Ver Contrato Oficial <Download className="w-3.5 h-3.5" />
                   </button>
@@ -296,13 +296,13 @@ export const EmployeeProfileView: React.FC<EmployeeProfileViewProps> = ({
             <div className="bg-white/90 backdrop-blur-xl rounded-3xl border border-slate-200/80 p-5 space-y-4 shadow-2xs">
               <div className="flex items-center justify-between">
                 <h3 className="font-bold text-xs text-slate-900 uppercase tracking-wide flex items-center gap-2">
-                  <CreditCard className="w-4 h-4 text-emerald-600" />
+                  <CreditCard className="w-4 h-4 text-neutral-800" />
                   Última Nómina Liquidada (Agosto 2026)
                 </h3>
                 {lastPayroll && (
                   <button
                     onClick={() => onOpenPayrollDoc(lastPayroll)}
-                    className="text-xs text-emerald-700 hover:text-emerald-800 font-semibold inline-flex items-center gap-1"
+                    className="text-xs text-neutral-900 hover:text-neutral-900 font-semibold inline-flex items-center gap-1"
                   >
                     Ver Desprendible Oficial <Download className="w-3.5 h-3.5" />
                   </button>
@@ -311,9 +311,9 @@ export const EmployeeProfileView: React.FC<EmployeeProfileViewProps> = ({
 
               {lastPayroll ? (
                 <div className="grid grid-cols-4 gap-3 text-xs">
-                  <div className="bg-emerald-50/70 p-3.5 rounded-2xl border border-emerald-100">
-                    <span className="text-emerald-800 block text-[11px] font-semibold">Total Devengado</span>
-                    <span className="font-mono font-bold text-emerald-950 text-sm">${lastPayroll.totalAccrued.toLocaleString('es-CO')}</span>
+                  <div className="bg-neutral-50/70 p-3.5 rounded-2xl border border-neutral-100">
+                    <span className="text-neutral-900 block text-[11px] font-semibold">Total Devengado</span>
+                    <span className="font-mono font-bold text-neutral-950 text-sm">${lastPayroll.totalAccrued.toLocaleString('es-CO')}</span>
                   </div>
                   <div className="bg-rose-50/70 p-3.5 rounded-2xl border border-rose-100">
                     <span className="text-rose-800 block text-[11px] font-semibold">Total Deducciones</span>
@@ -322,7 +322,7 @@ export const EmployeeProfileView: React.FC<EmployeeProfileViewProps> = ({
                   <div className="bg-slate-900 p-3.5 rounded-2xl text-white col-span-2 flex items-center justify-between shadow-inner">
                     <div>
                       <span className="text-slate-400 block text-[10px] uppercase font-bold">Neto Recibido</span>
-                      <span className="font-mono font-bold text-emerald-400 text-base">${lastPayroll.netPay.toLocaleString('es-CO')}</span>
+                      <span className="font-mono font-bold text-neutral-600 text-base">${lastPayroll.netPay.toLocaleString('es-CO')}</span>
                     </div>
                     <span className="text-[10px] bg-slate-800 px-2 py-1 rounded text-slate-300">Abonado a Cuenta</span>
                   </div>
@@ -340,14 +340,14 @@ export const EmployeeProfileView: React.FC<EmployeeProfileViewProps> = ({
             {/* Dotación & Workshop Spec Card */}
             <div className="bg-white/90 backdrop-blur-xl rounded-3xl border border-slate-200/80 p-5 space-y-4 shadow-2xs">
               <h3 className="font-bold text-xs text-slate-900 uppercase tracking-wide flex items-center gap-2">
-                <Shirt className="w-4 h-4 text-amber-600" />
+                <Shirt className="w-4 h-4 text-neutral-800" />
                 Dotación & Seguridad en Taller
               </h3>
 
               <div className="space-y-2 text-xs">
                 <div className="flex justify-between items-center pb-2 border-b border-slate-100">
                   <span className="text-slate-600">Especialidad</span>
-                  <span className="font-semibold text-amber-700">{employee.workshopSpecialty || 'Mecánica'}</span>
+                  <span className="font-semibold text-neutral-900">{employee.workshopSpecialty || 'Mecánica'}</span>
                 </div>
                 <div className="flex justify-between items-center pb-2 border-b border-slate-100">
                   <span className="text-slate-600">Talla Calzado</span>
@@ -367,7 +367,7 @@ export const EmployeeProfileView: React.FC<EmployeeProfileViewProps> = ({
             {/* Saldo Laboral Card */}
             <div className="bg-white/90 backdrop-blur-xl rounded-3xl border border-slate-200/80 p-5 space-y-4 shadow-2xs">
               <h3 className="font-bold text-xs text-slate-900 uppercase tracking-wide flex items-center gap-2">
-                <ShieldCheck className="w-4 h-4 text-emerald-600" />
+                <ShieldCheck className="w-4 h-4 text-neutral-800" />
                 Saldo Laboral & Prestaciones
               </h3>
 
@@ -381,12 +381,12 @@ export const EmployeeProfileView: React.FC<EmployeeProfileViewProps> = ({
                   <span className="font-mono font-medium text-slate-500">{employee.takenVacationDays} Días</span>
                 </div>
                 <div className="flex justify-between items-center pb-2 border-b border-slate-100">
-                  <span className="text-emerald-800 font-semibold">Vacaciones Pendientes</span>
-                  <span className="font-mono font-bold text-emerald-700">{employee.accruedVacationDays - employee.takenVacationDays} Días</span>
+                  <span className="text-neutral-900 font-semibold">Vacaciones Pendientes</span>
+                  <span className="font-mono font-bold text-neutral-900">{employee.accruedVacationDays - employee.takenVacationDays} Días</span>
                 </div>
                 <div className="flex justify-between items-center">
                   <span className="text-slate-600">Saldo Préstamos Activos</span>
-                  <span className="font-mono font-bold text-amber-700">${totalLoanBalance.toLocaleString('es-CO')}</span>
+                  <span className="font-mono font-bold text-neutral-900">${totalLoanBalance.toLocaleString('es-CO')}</span>
                 </div>
               </div>
             </div>
@@ -405,7 +405,7 @@ export const EmployeeProfileView: React.FC<EmployeeProfileViewProps> = ({
             </div>
             <button
               onClick={() => onOpenEditEmployee(employee)}
-              className="px-4 py-2 bg-amber-500 hover:bg-amber-600 text-white font-bold rounded-xl shadow-xs transition-colors flex items-center gap-1.5"
+              className="px-4 py-2 bg-neutral-700 hover:bg-neutral-800 text-white font-bold rounded-xl shadow-xs transition-colors flex items-center gap-1.5"
             >
               <Edit3 className="w-3.5 h-3.5" />
               Editar Fecha Ingreso & Datos
@@ -475,9 +475,9 @@ export const EmployeeProfileView: React.FC<EmployeeProfileViewProps> = ({
           {lastPayroll ? (
             <div className="space-y-4">
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                <div className="p-4 bg-emerald-50/80 border border-emerald-200 rounded-2xl">
-                  <span className="text-emerald-800 block text-[11px] font-semibold">Neto Recibido por Empleado</span>
-                  <span className="text-lg font-bold font-mono text-emerald-950">${lastPayroll.netPay.toLocaleString('es-CO')}</span>
+                <div className="p-4 bg-neutral-50/80 border border-neutral-200 rounded-2xl">
+                  <span className="text-neutral-900 block text-[11px] font-semibold">Neto Recibido por Empleado</span>
+                  <span className="text-lg font-bold font-mono text-neutral-950">${lastPayroll.netPay.toLocaleString('es-CO')}</span>
                 </div>
                 <div className="p-4 bg-blue-50/80 border border-blue-200 rounded-2xl">
                   <span className="text-blue-800 block text-[11px] font-semibold">Aportes & Seguridad Social</span>
@@ -485,7 +485,7 @@ export const EmployeeProfileView: React.FC<EmployeeProfileViewProps> = ({
                 </div>
                 <div className="p-4 bg-slate-900 text-white rounded-2xl shadow-inner">
                   <span className="text-slate-400 block text-[11px]">Costo Real Total Empresa</span>
-                  <span className="text-lg font-bold font-mono text-emerald-400">${lastPayroll.totalCompanyCost.toLocaleString('es-CO')}</span>
+                  <span className="text-lg font-bold font-mono text-neutral-600">${lastPayroll.totalCompanyCost.toLocaleString('es-CO')}</span>
                 </div>
               </div>
 
@@ -526,7 +526,7 @@ export const EmployeeProfileView: React.FC<EmployeeProfileViewProps> = ({
                     </tr>
                     <tr className="flex justify-between p-3.5 bg-slate-50 font-bold border-t border-slate-200">
                       <span>COSTO REAL MENSUAL EMPRESA:</span>
-                      <span className="font-mono text-emerald-700 text-sm">${lastPayroll.totalCompanyCost.toLocaleString('es-CO')} COP</span>
+                      <span className="font-mono text-neutral-900 text-sm">${lastPayroll.totalCompanyCost.toLocaleString('es-CO')} COP</span>
                     </tr>
                   </tbody>
                 </table>
@@ -546,9 +546,9 @@ export const EmployeeProfileView: React.FC<EmployeeProfileViewProps> = ({
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {/* Contrato Laboral */}
             {contract && (
-              <div className="p-4 border border-slate-200/80 rounded-2xl flex items-center justify-between hover:border-amber-500 transition-colors bg-slate-50/50">
+              <div className="p-4 border border-slate-200/80 rounded-2xl flex items-center justify-between hover:border-neutral-700 transition-colors bg-slate-50/50">
                 <div className="flex items-center gap-3">
-                  <div className="p-2.5 bg-amber-50 text-amber-700 rounded-xl">
+                  <div className="p-2.5 bg-neutral-100 text-neutral-900 rounded-xl">
                     <FileText className="w-5 h-5" />
                   </div>
                   <div>
@@ -566,7 +566,7 @@ export const EmployeeProfileView: React.FC<EmployeeProfileViewProps> = ({
             )}
 
             {/* Certificado Laboral */}
-            <div className="p-4 border border-slate-200/80 rounded-2xl flex items-center justify-between hover:border-amber-500 transition-colors bg-slate-50/50">
+            <div className="p-4 border border-slate-200/80 rounded-2xl flex items-center justify-between hover:border-neutral-700 transition-colors bg-slate-50/50">
               <div className="flex items-center gap-3">
                 <div className="p-2.5 bg-blue-50 text-blue-700 rounded-xl">
                   <FileCheck className="w-5 h-5" />
@@ -586,7 +586,7 @@ export const EmployeeProfileView: React.FC<EmployeeProfileViewProps> = ({
 
             {/* Desprendible de Nómina */}
             {lastPayroll && (
-              <div className="p-4 border border-slate-200/80 rounded-2xl flex items-center justify-between hover:border-amber-500 transition-colors bg-slate-50/50">
+              <div className="p-4 border border-slate-200/80 rounded-2xl flex items-center justify-between hover:border-neutral-700 transition-colors bg-slate-50/50">
                 <div className="flex items-center gap-3">
                   <div className="p-2.5 bg-purple-50 text-purple-700 rounded-xl">
                     <CreditCard className="w-5 h-5" />

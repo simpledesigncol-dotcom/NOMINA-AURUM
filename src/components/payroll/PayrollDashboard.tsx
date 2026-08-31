@@ -125,9 +125,9 @@ export const PayrollDashboard: React.FC<PayrollDashboardProps> = ({
           <div className="flex items-center gap-2">
             <h1 className="text-xl font-bold text-slate-950">Liquidación Integral de Nómina</h1>
             <span className={`px-2.5 py-0.5 rounded-full text-xs font-bold ${
-              currentPeriod.status === 'Borrador' ? 'bg-amber-100 text-amber-800' :
+              currentPeriod.status === 'Borrador' ? 'bg-neutral-200 text-neutral-900' :
               currentPeriod.status === 'Calculada' ? 'bg-blue-100 text-blue-800' :
-              'bg-emerald-100 text-emerald-800'
+              'bg-neutral-100 text-neutral-900'
             }`}>
               Estado: {currentPeriod.status}
             </span>
@@ -140,7 +140,7 @@ export const PayrollDashboard: React.FC<PayrollDashboardProps> = ({
         <div className="flex items-center gap-2">
           <button
             onClick={onRecalculatePayroll}
-            className="inline-flex items-center gap-2 px-4 py-2 bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold rounded-xl shadow-xs transition-colors"
+            className="inline-flex items-center gap-2 px-4 py-2 bg-neutral-800 hover:bg-neutral-900 text-white text-xs font-bold rounded-xl shadow-xs transition-colors"
           >
             <Calculator className="w-4 h-4" />
             Recalcular Nómina en Lote
@@ -150,7 +150,7 @@ export const PayrollDashboard: React.FC<PayrollDashboardProps> = ({
             onClick={handleExportCSV}
             className="inline-flex items-center gap-2 px-3.5 py-2 bg-white border border-slate-300 hover:bg-slate-50 text-slate-700 text-xs font-semibold rounded-xl shadow-2xs transition-colors"
           >
-            <Download className="w-4 h-4 text-emerald-600" />
+            <Download className="w-4 h-4 text-neutral-800" />
             Exportar CSV / Excel
           </button>
 
@@ -159,7 +159,7 @@ export const PayrollDashboard: React.FC<PayrollDashboardProps> = ({
               onClick={onClosePeriod}
               className="inline-flex items-center gap-2 px-3.5 py-2 bg-slate-900 hover:bg-slate-800 text-white text-xs font-semibold rounded-xl shadow-xs transition-colors"
             >
-              <CheckCircle2 className="w-4 h-4 text-emerald-400" />
+              <CheckCircle2 className="w-4 h-4 text-neutral-600" />
               Aprobar & Cerrar Período
             </button>
           )}
@@ -184,12 +184,12 @@ export const PayrollDashboard: React.FC<PayrollDashboardProps> = ({
           <span className="text-[10px] text-slate-400 mt-0.5 block">Salud, Pensión, Retefuente</span>
         </div>
 
-        <div className="bg-emerald-50/70 p-4 rounded-xl border border-emerald-200 shadow-2xs">
-          <span className="text-emerald-900 block text-[11px] font-bold">3. Total Neto a Pagar</span>
-          <span className="text-lg font-bold font-mono text-emerald-900 mt-1 block">
+        <div className="bg-neutral-50/70 p-4 rounded-xl border border-neutral-200 shadow-2xs">
+          <span className="text-neutral-950 block text-[11px] font-bold">3. Total Neto a Pagar</span>
+          <span className="text-lg font-bold font-mono text-neutral-950 mt-1 block">
             ${totalNetPayAll.toLocaleString('es-CO')}
           </span>
-          <span className="text-[10px] text-emerald-700 mt-0.5 block">Dispersión bancaria</span>
+          <span className="text-[10px] text-neutral-900 mt-0.5 block">Dispersión bancaria</span>
         </div>
 
         <div className="bg-white p-4 rounded-xl border border-slate-200 shadow-2xs">
@@ -202,7 +202,7 @@ export const PayrollDashboard: React.FC<PayrollDashboardProps> = ({
 
         <div className="bg-slate-900 text-white p-4 rounded-xl shadow-md col-span-2 lg:col-span-1">
           <span className="text-slate-300 block text-[11px] font-semibold uppercase">5. Costo Total Empresa</span>
-          <span className="text-lg font-bold font-mono text-emerald-400 mt-1 block">
+          <span className="text-lg font-bold font-mono text-neutral-600 mt-1 block">
             ${totalEmployerCostAll.toLocaleString('es-CO')}
           </span>
           <span className="text-[10px] text-slate-400 mt-0.5 block">Devengados + Aportes + Provisiones</span>
@@ -250,7 +250,7 @@ export const PayrollDashboard: React.FC<PayrollDashboardProps> = ({
                 <th className="p-3 text-right font-bold text-slate-900">Total Devengado</th>
                 <th className="p-3 text-right">Salud + Pensión (8%)</th>
                 <th className="p-3 text-right">Retefuente / Otros</th>
-                <th className="p-3 text-right font-bold text-emerald-700 bg-emerald-50/50">Neto a Pagar</th>
+                <th className="p-3 text-right font-bold text-neutral-900 bg-neutral-50/50">Neto a Pagar</th>
                 <th className="p-3 text-right font-bold text-slate-900">Costo Empresa</th>
                 <th className="p-3 text-center">Acciones</th>
               </tr>
@@ -270,7 +270,7 @@ export const PayrollDashboard: React.FC<PayrollDashboardProps> = ({
                   <td className="p-3 text-right font-mono font-bold text-slate-900">${(item.totalAccrued ?? 0).toLocaleString('es-CO')}</td>
                   <td className="p-3 text-right font-mono text-rose-700">${((item.healthEmployee ?? 0) + (item.pensionEmployee ?? 0)).toLocaleString('es-CO')}</td>
                   <td className="p-3 text-right font-mono text-rose-700">${((item.withholdingTax ?? 0) + (item.loanDeductions ?? 0) + (item.advancesDeductions ?? 0)).toLocaleString('es-CO')}</td>
-                  <td className="p-3 text-right font-mono font-bold text-emerald-800 bg-emerald-50/50 text-sm">
+                  <td className="p-3 text-right font-mono font-bold text-neutral-900 bg-neutral-50/50 text-sm">
                     ${(item.netPay ?? 0).toLocaleString('es-CO')}
                   </td>
                   <td className="p-3 text-right font-mono font-bold text-slate-900">
@@ -281,7 +281,7 @@ export const PayrollDashboard: React.FC<PayrollDashboardProps> = ({
                       <button
                         onClick={() => onOpenPayrollDoc(item)}
                         title="Ver Desprendible Oficial de Pago"
-                        className="p-1.5 text-slate-600 hover:text-emerald-700 hover:bg-emerald-50 rounded-lg transition-colors"
+                        className="p-1.5 text-slate-600 hover:text-neutral-900 hover:bg-neutral-50 rounded-lg transition-colors"
                       >
                         <FileText className="w-4 h-4" />
                       </button>
@@ -308,7 +308,7 @@ export const PayrollDashboard: React.FC<PayrollDashboardProps> = ({
             
             <div className="bg-slate-900 text-white px-6 py-4 flex items-center justify-between">
               <div className="flex items-center gap-2">
-                <ShieldCheck className="w-5 h-5 text-emerald-400" />
+                <ShieldCheck className="w-5 h-5 text-neutral-600" />
                 <h2 className="text-base font-semibold">Trazabilidad & Explicabilidad Normativa</h2>
               </div>
               <button onClick={() => setSelectedItemForInspect(null)} className="text-slate-400 hover:text-white">✕</button>
@@ -328,7 +328,7 @@ export const PayrollDashboard: React.FC<PayrollDashboardProps> = ({
                   <div key={idx} className="bg-white p-3 rounded-lg border border-slate-200 space-y-1">
                     <div className="flex justify-between items-center font-bold text-slate-900">
                       <span>{exp.concept}</span>
-                      <span className="font-mono text-emerald-700">${exp.value.toLocaleString('es-CO')}</span>
+                      <span className="font-mono text-neutral-900">${exp.value.toLocaleString('es-CO')}</span>
                     </div>
                     <div className="text-slate-600 font-mono text-[11px] bg-slate-50 p-2 rounded border border-slate-100">
                       {exp.formula}

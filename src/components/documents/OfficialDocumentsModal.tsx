@@ -62,7 +62,7 @@ export const OfficialDocumentsModal: React.FC<OfficialDocumentsModalProps> = ({
         {/* Top iOS Control Bar (Hidden on print) */}
         <div className="bg-slate-900 text-white px-6 py-4 flex items-center justify-between no-print border-b border-slate-800">
           <div className="flex items-center gap-3">
-            <div className="p-2.5 bg-amber-500/20 text-amber-400 rounded-2xl border border-amber-500/30">
+            <div className="p-2.5 bg-neutral-700/20 text-neutral-500 rounded-2xl border border-neutral-700/30">
               <FileText className="w-5 h-5" />
             </div>
             <div>
@@ -84,7 +84,7 @@ export const OfficialDocumentsModal: React.FC<OfficialDocumentsModalProps> = ({
           <div className="flex items-center gap-2">
             <button
               onClick={handlePrint}
-              className="inline-flex items-center gap-2 px-4 py-2 bg-amber-600 hover:bg-amber-500 text-white text-xs font-bold rounded-xl transition-colors shadow-xs"
+              className="inline-flex items-center gap-2 px-4 py-2 bg-neutral-800 hover:bg-neutral-700 text-white text-xs font-bold rounded-xl transition-colors shadow-xs"
             >
               <Printer className="w-4 h-4" />
               Imprimir / PDF
@@ -112,7 +112,7 @@ export const OfficialDocumentsModal: React.FC<OfficialDocumentsModalProps> = ({
                 <h1 className="text-xl font-bold text-slate-950 uppercase mt-1">
                   CONTRATO INDIVIDUAL DE TRABAJO A {(contract.type || 'Término Indefinido').toUpperCase()}
                 </h1>
-                <p className="text-xs font-sans text-amber-700 font-bold mt-1">
+                <p className="text-xs font-sans text-neutral-900 font-bold mt-1">
                   AURUM MOTORS S.A.S. — TALLER AUTOMOTRIZ ESPECIALIZADO
                 </p>
                 <p className="text-xs font-sans text-slate-600">
@@ -203,7 +203,7 @@ export const OfficialDocumentsModal: React.FC<OfficialDocumentsModalProps> = ({
                   <p className="text-slate-600">Representante Legal</p>
                   <p className="text-slate-600 font-bold">{company.legalName}</p>
                   <p className="text-slate-600">NIT: {company.nit}-{company.dv}</p>
-                  <p className="text-[10px] text-amber-700 font-mono mt-2 flex items-center gap-1">
+                  <p className="text-[10px] text-neutral-900 font-mono mt-2 flex items-center gap-1">
                     <BadgeCheck className="w-3.5 h-3.5" /> Suscripción Autorizada por Gerencia
                   </p>
                 </div>
@@ -214,7 +214,7 @@ export const OfficialDocumentsModal: React.FC<OfficialDocumentsModalProps> = ({
                     <p className="text-slate-600 font-medium">EL TRABAJADOR</p>
                     <p className="text-slate-600">{employee.documentType} No. {employee.documentNumber}</p>
                     <p className="text-slate-600">Tel: {employee.phone}</p>
-                    <p className="text-[10px] text-emerald-700 font-mono mt-2 flex items-center gap-1">
+                    <p className="text-[10px] text-neutral-900 font-mono mt-2 flex items-center gap-1">
                       <BadgeCheck className="w-3.5 h-3.5" /> Aceptado & Registrado en Sistema
                     </p>
                   </div>
@@ -238,7 +238,7 @@ export const OfficialDocumentsModal: React.FC<OfficialDocumentsModalProps> = ({
                 <h1 className="text-xl font-bold text-slate-950 uppercase mt-1">
                   ACTA DE ENTREGA DE DOTACIÓN Y ELEMENTOS DE PROTECCIÓN PERSONAL (EPP)
                 </h1>
-                <p className="text-xs font-bold text-amber-700 mt-1">
+                <p className="text-xs font-bold text-neutral-900 mt-1">
                   {company.legalName} • {dotacionDelivery.actNumber}
                 </p>
                 <p className="text-xs text-slate-600">
@@ -282,14 +282,14 @@ export const OfficialDocumentsModal: React.FC<OfficialDocumentsModalProps> = ({
                         <td className="p-2.5 text-slate-600">{item.category}</td>
                         <td className="p-2.5 font-mono">{item.quantity}</td>
                         <td className="p-2.5 font-mono font-bold">{item.size || 'N/A'}</td>
-                        <td className="p-2.5 text-emerald-700 font-semibold">{item.condition || 'Nuevo'}</td>
+                        <td className="p-2.5 text-neutral-900 font-semibold">{item.condition || 'Nuevo'}</td>
                       </tr>
                     ))}
                   </tbody>
                 </table>
               </div>
 
-              <div className="p-4 bg-amber-50/80 border border-amber-200 rounded-xl text-xs space-y-1.5 text-amber-950">
+              <div className="p-4 bg-neutral-100/80 border border-neutral-300 rounded-xl text-xs space-y-1.5 text-neutral-950">
                 <p className="font-bold">COMPROMISO Y OBLIGATORIEDAD DE USO (Art. 233 CST):</p>
                 <p>
                   1. El trabajador se compromete expresamente a utilizar de manera obligatoria y permanente la dotación y EPP entregados durante toda su jornada laboral en las bahías de mecánica, cabinas de pintura y zonas de detailing.
@@ -335,7 +335,7 @@ export const OfficialDocumentsModal: React.FC<OfficialDocumentsModalProps> = ({
                   <p className="text-xs text-slate-500">
                     NIT: {company.nit}-{company.dv} • {company.address}, {company.city}
                   </p>
-                  <p className="text-xs font-semibold text-amber-700 mt-1">
+                  <p className="text-xs font-semibold text-neutral-900 mt-1">
                     COMPROBANTE OFICIAL DE PAGO DE NÓMINA ELECTRÓNICA
                   </p>
                 </div>
@@ -363,7 +363,7 @@ export const OfficialDocumentsModal: React.FC<OfficialDocumentsModalProps> = ({
                 </div>
                 <div>
                   <span className="text-slate-500 block">Salario Básico:</span>
-                  <span className="font-bold text-emerald-700 font-mono">${(payrollItem.salaryBase ?? payrollItem.basicSalaryAccrued ?? 0).toLocaleString('es-CO')}</span>
+                  <span className="font-bold text-neutral-900 font-mono">${(payrollItem.salaryBase ?? payrollItem.basicSalaryAccrued ?? 0).toLocaleString('es-CO')}</span>
                 </div>
               </div>
 
@@ -371,7 +371,7 @@ export const OfficialDocumentsModal: React.FC<OfficialDocumentsModalProps> = ({
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
                 {/* Devengados */}
                 <div className="border border-slate-200 rounded-lg p-3 space-y-2">
-                  <h3 className="font-bold text-emerald-800 border-b border-emerald-100 pb-1 uppercase flex justify-between">
+                  <h3 className="font-bold text-neutral-900 border-b border-neutral-100 pb-1 uppercase flex justify-between">
                     <span>Conceptos Devengados</span>
                     <span>Valor</span>
                   </h3>
@@ -407,7 +407,7 @@ export const OfficialDocumentsModal: React.FC<OfficialDocumentsModalProps> = ({
                   </div>
                   <div className="border-t border-slate-200 pt-2 flex justify-between font-bold text-slate-900">
                     <span>TOTAL DEVENGADO:</span>
-                    <span className="text-emerald-700 font-mono">${(payrollItem.totalAccrued ?? 0).toLocaleString('es-CO')}</span>
+                    <span className="text-neutral-900 font-mono">${(payrollItem.totalAccrued ?? 0).toLocaleString('es-CO')}</span>
                   </div>
                 </div>
 
@@ -447,12 +447,12 @@ export const OfficialDocumentsModal: React.FC<OfficialDocumentsModalProps> = ({
               </div>
 
               {/* Net Pay Highlight */}
-              <div className="p-4 bg-emerald-50 border border-emerald-200 rounded-xl flex items-center justify-between">
+              <div className="p-4 bg-neutral-50 border border-neutral-200 rounded-xl flex items-center justify-between">
                 <div>
-                  <span className="text-xs text-emerald-800 font-bold uppercase block">Neto Pagado al Colaborador:</span>
-                  <span className="text-[11px] text-emerald-700">Abonado a cuenta bancaria registrada</span>
+                  <span className="text-xs text-neutral-900 font-bold uppercase block">Neto Pagado al Colaborador:</span>
+                  <span className="text-[11px] text-neutral-900">Abonado a cuenta bancaria registrada</span>
                 </div>
-                <span className="text-xl font-extrabold text-emerald-900 font-mono">
+                <span className="text-xl font-extrabold text-neutral-950 font-mono">
                   ${(payrollItem.netPay ?? 0).toLocaleString('es-CO')} COP
                 </span>
               </div>
@@ -469,7 +469,7 @@ export const OfficialDocumentsModal: React.FC<OfficialDocumentsModalProps> = ({
                 <h1 className="text-xl font-bold text-slate-950 uppercase mt-1">
                   LIQUIDACIÓN DEFINITIVA DE CONTRATO DE TRABAJO Y PRESTACIONES SOCIALES
                 </h1>
-                <p className="text-xs font-bold text-amber-700 mt-1">
+                <p className="text-xs font-bold text-neutral-900 mt-1">
                   {company.legalName} • NIT {company.nit}-{company.dv}
                 </p>
               </div>
@@ -521,7 +521,7 @@ export const OfficialDocumentsModal: React.FC<OfficialDocumentsModalProps> = ({
                       <td className="p-3 text-right font-mono font-medium">${(settlement.vacationAmount ?? 0).toLocaleString('es-CO')}</td>
                     </tr>
                     {settlement.hasIndemnity && (
-                      <tr className="bg-amber-50 text-amber-950 font-bold">
+                      <tr className="bg-neutral-100 text-neutral-950 font-bold">
                         <td className="p-3">Indemnización por Despido Injustificado (Art. 64 CST)</td>
                         <td className="p-3 text-center font-mono">-</td>
                         <td className="p-3 text-right font-mono">${(settlement.indemnityAmount ?? 0).toLocaleString('es-CO')}</td>
@@ -543,7 +543,7 @@ export const OfficialDocumentsModal: React.FC<OfficialDocumentsModalProps> = ({
                   <span className="text-xs text-slate-400 font-bold uppercase block">NETO TOTAL A PAGAR AL TRABAJADOR:</span>
                   <span className="text-[11px] text-slate-300">Pago total y definitivo de acreencias</span>
                 </div>
-                <span className="text-xl font-extrabold text-emerald-400 font-mono">
+                <span className="text-xl font-extrabold text-neutral-600 font-mono">
                   ${(settlement.netSettlementAmount ?? 0).toLocaleString('es-CO')} COP
                 </span>
               </div>
@@ -569,7 +569,7 @@ export const OfficialDocumentsModal: React.FC<OfficialDocumentsModalProps> = ({
               <div className="text-center space-y-2">
                 <h2 className="text-lg font-bold font-sans text-slate-900 uppercase tracking-widest">{company.legalName}</h2>
                 <p className="text-xs font-sans text-slate-500">NIT: {company.nit}-{company.dv} • {company.city}</p>
-                <div className="w-24 h-0.5 bg-amber-600 mx-auto my-4"></div>
+                <div className="w-24 h-0.5 bg-neutral-800 mx-auto my-4"></div>
                 <h1 className="text-base font-bold font-sans uppercase tracking-wider text-slate-950">
                   PAZ Y SALVO LABORAL GENERAL Y MUTUO
                 </h1>
@@ -612,11 +612,11 @@ export const OfficialDocumentsModal: React.FC<OfficialDocumentsModalProps> = ({
               <div className="text-center space-y-2">
                 <h2 className="text-lg font-bold font-sans text-slate-900 uppercase tracking-widest">{company.legalName}</h2>
                 <p className="text-xs font-sans text-slate-500">NIT: {company.nit}-{company.dv} • {company.city}</p>
-                <div className="w-24 h-0.5 bg-amber-600 mx-auto my-4"></div>
+                <div className="w-24 h-0.5 bg-neutral-800 mx-auto my-4"></div>
                 <h1 className="text-base font-bold font-sans uppercase tracking-wider text-slate-950">
                   LA GERENCIA Y GESTIÓN HUMANA
                 </h1>
-                <h3 className="text-sm font-sans font-bold text-amber-700 uppercase">
+                <h3 className="text-sm font-sans font-bold text-neutral-900 uppercase">
                   CERTIFICA:
                 </h3>
               </div>

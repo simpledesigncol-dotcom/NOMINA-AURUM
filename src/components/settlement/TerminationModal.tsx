@@ -202,7 +202,7 @@ const TerminationModalContent: React.FC<TerminationModalContentProps> = ({
                   <span className="font-mono font-medium">${(settlementPreview.vacationAmount ?? 0).toLocaleString('es-CO')}</span>
                 </div>
                 {settlementPreview.hasIndemnity && (
-                  <div className="flex justify-between pt-1 text-amber-900 bg-amber-50 p-2 rounded">
+                  <div className="flex justify-between pt-1 text-neutral-950 bg-neutral-100 p-2 rounded">
                     <span className="font-bold">Indemnización Art. 64 CST (Despido Injustificado):</span>
                     <span className="font-mono font-bold">${(settlementPreview.indemnityAmount ?? 0).toLocaleString('es-CO')}</span>
                   </div>
@@ -220,7 +220,7 @@ const TerminationModalContent: React.FC<TerminationModalContentProps> = ({
                   <span className="text-[10px] text-slate-400 uppercase font-bold tracking-wider">TOTAL NETO A PAGAR AL TRABAJADOR</span>
                   <p className="text-[11px] text-slate-300">Incluye todas las acreencias laborales exigibles</p>
                 </div>
-                <div className="text-xl font-bold font-mono text-emerald-400">
+                <div className="text-xl font-bold font-mono text-neutral-600">
                   ${(settlementPreview.netSettlementAmount ?? 0).toLocaleString('es-CO')} COP
                 </div>
               </div>

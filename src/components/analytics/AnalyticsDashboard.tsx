@@ -105,12 +105,12 @@ export const AnalyticsDashboard: React.FC<AnalyticsDashboardProps> = ({
               <span className="text-xl font-bold font-mono text-slate-950 mt-1 block">
                 ${totalPayrollCost.toLocaleString('es-CO')}
               </span>
-              <span className="text-[10px] text-emerald-700 mt-1 block">100% de la carga patronal</span>
+              <span className="text-[10px] text-neutral-900 mt-1 block">100% de la carga patronal</span>
             </div>
 
             <div className="bg-white p-5 rounded-2xl border border-slate-200 shadow-2xs">
               <span className="text-slate-500 font-semibold block text-[11px]">Neto Dispersado</span>
-              <span className="text-xl font-bold font-mono text-emerald-700 mt-1 block">
+              <span className="text-xl font-bold font-mono text-neutral-900 mt-1 block">
                 ${totalNetPay.toLocaleString('es-CO')}
               </span>
               <span className="text-[10px] text-slate-400 mt-1 block">Pagado a cuentas de nómina</span>
@@ -139,7 +139,7 @@ export const AnalyticsDashboard: React.FC<AnalyticsDashboardProps> = ({
             {/* Dept distribution card */}
             <div className="bg-white rounded-2xl border border-slate-200 p-6 space-y-4 shadow-2xs text-xs">
               <h3 className="font-bold text-sm text-slate-900 flex items-center gap-2">
-                <Building className="w-4 h-4 text-emerald-600" />
+                <Building className="w-4 h-4 text-neutral-800" />
                 Distribución de Costo por Centro de Costo & Área
               </h3>
 
@@ -154,7 +154,7 @@ export const AnalyticsDashboard: React.FC<AnalyticsDashboardProps> = ({
                       </div>
                       <div className="w-full h-2 bg-slate-100 rounded-full overflow-hidden">
                         <div 
-                          className="h-full bg-emerald-600 rounded-full transition-all duration-500" 
+                          className="h-full bg-neutral-800 rounded-full transition-all duration-500" 
                           style={{ width: `${percent}%` }}
                         ></div>
                       </div>
@@ -167,7 +167,7 @@ export const AnalyticsDashboard: React.FC<AnalyticsDashboardProps> = ({
             {/* ARL Risk distribution */}
             <div className="bg-white rounded-2xl border border-slate-200 p-6 space-y-4 shadow-2xs text-xs">
               <h3 className="font-bold text-sm text-slate-900 flex items-center gap-2">
-                <ShieldCheck className="w-4 h-4 text-emerald-600" />
+                <ShieldCheck className="w-4 h-4 text-neutral-800" />
                 Distribución de Riesgos Laborales (ARL)
               </h3>
 
@@ -186,7 +186,7 @@ export const AnalyticsDashboard: React.FC<AnalyticsDashboardProps> = ({
                 </div>
               </div>
 
-              <div className="bg-emerald-50 border border-emerald-200 p-3 rounded-xl text-[11px] text-emerald-900">
+              <div className="bg-neutral-50 border border-neutral-200 p-3 rounded-xl text-[11px] text-neutral-950">
                 <strong>Beneficio Tributario Art. 114-1 E.T.:</strong> La empresa está exonerada del pago de aportes patronales a Salud (8.5%), SENA (2%) e ICBF (3%) para todos los colaboradores con remuneración inferior a 10 SMLMV.
               </div>
             </div>

@@ -102,7 +102,7 @@ const EditEmployeeModalContent: React.FC<EditEmployeeModalContentProps> = ({
           <div className="flex-1 text-center sm:text-left">
             <div className="w-10 h-1.5 bg-slate-300 rounded-full mx-auto sm:hidden mb-2" />
             <h2 className="text-base font-bold text-slate-900 flex items-center gap-2">
-              <User className="w-4 h-4 text-amber-600" />
+              <User className="w-4 h-4 text-neutral-800" />
               Editar Expediente y Fecha de Contratación
             </h2>
             <p className="text-xs text-slate-500">
@@ -121,13 +121,13 @@ const EditEmployeeModalContent: React.FC<EditEmployeeModalContentProps> = ({
         <form onSubmit={handleSubmit} className="p-6 overflow-y-auto space-y-5 text-xs flex-1">
           
           {/* Section: HIRE DATE (Highlighted for user request) */}
-          <div className="p-4 bg-amber-50/80 border border-amber-200/80 rounded-2xl space-y-2">
+          <div className="p-4 bg-neutral-100/80 border border-neutral-300/80 rounded-2xl space-y-2">
             <div className="flex items-center justify-between">
               <label className="font-bold text-slate-900 flex items-center gap-1.5 text-xs">
-                <Calendar className="w-4 h-4 text-amber-600" />
+                <Calendar className="w-4 h-4 text-neutral-800" />
                 Fecha de Ingreso / Contratación *
               </label>
-              <span className="text-[10px] bg-amber-200/60 text-amber-900 px-2 py-0.5 rounded-md font-semibold">
+              <span className="text-[10px] bg-neutral-300/60 text-neutral-950 px-2 py-0.5 rounded-md font-semibold">
                 Modificación Clave
               </span>
             </div>
@@ -139,7 +139,7 @@ const EditEmployeeModalContent: React.FC<EditEmployeeModalContentProps> = ({
               required
               value={hireDate}
               onChange={e => setHireDate(e.target.value)}
-              className="w-full px-3.5 py-2.5 bg-white border border-amber-300 rounded-xl font-bold font-mono text-slate-900 text-sm focus:ring-2 focus:ring-amber-500 shadow-2xs"
+              className="w-full px-3.5 py-2.5 bg-white border border-neutral-400 rounded-xl font-bold font-mono text-slate-900 text-sm focus:ring-2 focus:ring-neutral-700 shadow-2xs"
             />
           </div>
 
@@ -248,7 +248,7 @@ const EditEmployeeModalContent: React.FC<EditEmployeeModalContentProps> = ({
           {/* Section: Dotación & EPP Sizes */}
           <div className="space-y-3">
             <h3 className="font-bold text-slate-800 uppercase tracking-wider text-[11px] flex items-center gap-1.5">
-              <Shirt className="w-3.5 h-3.5 text-amber-600" />
+              <Shirt className="w-3.5 h-3.5 text-neutral-800" />
               3. Tallas de Dotación y EPP (Art. 230 CST)
             </h3>
             <div className="grid grid-cols-3 gap-3">
@@ -340,7 +340,7 @@ const EditEmployeeModalContent: React.FC<EditEmployeeModalContentProps> = ({
             </button>
             <button
               type="submit"
-              className="inline-flex items-center gap-1.5 px-5 py-2 bg-amber-500 hover:bg-amber-600 text-white font-bold rounded-xl shadow-xs transition-colors"
+              className="inline-flex items-center gap-1.5 px-5 py-2 bg-neutral-700 hover:bg-neutral-800 text-white font-bold rounded-xl shadow-xs transition-colors"
             >
               <Save className="w-3.5 h-3.5" />
               Guardar Cambios

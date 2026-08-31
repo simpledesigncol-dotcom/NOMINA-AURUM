@@ -52,7 +52,7 @@ export const LegalRulesModal: React.FC<LegalRulesModalProps> = ({
         {/* Header */}
         <div className="bg-slate-900 text-white px-6 py-4 flex items-center justify-between border-b border-slate-800">
           <div className="flex items-center gap-3">
-            <div className="p-2 bg-emerald-500/20 text-emerald-400 rounded-lg border border-emerald-500/30">
+            <div className="p-2 bg-neutral-700/20 text-neutral-600 rounded-lg border border-neutral-700/30">
               <Scale className="w-5 h-5" />
             </div>
             <div>
@@ -71,8 +71,8 @@ export const LegalRulesModal: React.FC<LegalRulesModalProps> = ({
         <form onSubmit={handleSave} className="p-6 overflow-y-auto space-y-6 text-xs">
           
           {successMsg && (
-            <div className="p-3 bg-emerald-50 border border-emerald-200 text-emerald-900 rounded-xl flex items-center gap-2 font-semibold">
-              <CheckCircle2 className="w-4 h-4 text-emerald-600" />
+            <div className="p-3 bg-neutral-50 border border-neutral-200 text-neutral-950 rounded-xl flex items-center gap-2 font-semibold">
+              <CheckCircle2 className="w-4 h-4 text-neutral-800" />
               ¡Parámetros normativos actualizados exitosamente! Todos los cálculos de nómina reflejan las nuevas tasas.
             </div>
           )}
@@ -80,7 +80,7 @@ export const LegalRulesModal: React.FC<LegalRulesModalProps> = ({
           {/* 1. Salarios y Topes */}
           <div className="space-y-3">
             <h3 className="font-bold text-xs uppercase text-slate-900 flex items-center gap-2 border-b border-slate-200 pb-1">
-              <span className="w-2 h-2 rounded-full bg-emerald-600"></span>
+              <span className="w-2 h-2 rounded-full bg-neutral-800"></span>
               1. Parámetros Monetarios Base (Vigencia {rules.year})
             </h3>
             <div className="grid grid-cols-3 gap-4">
@@ -152,7 +152,7 @@ export const LegalRulesModal: React.FC<LegalRulesModalProps> = ({
                   step="0.01"
                   value={rules.sundayHolidaySurchargeRate}
                   onChange={e => setRules({ ...rules, sundayHolidaySurchargeRate: Number(e.target.value) })}
-                  className="w-full px-3 py-2 border border-slate-300 rounded-lg font-mono font-bold text-emerald-800"
+                  className="w-full px-3 py-2 border border-slate-300 rounded-lg font-mono font-bold text-neutral-900"
                 />
                 <span className="text-[10px] text-slate-400">1.00 (100% Ley 2466)</span>
               </div>
@@ -226,7 +226,7 @@ export const LegalRulesModal: React.FC<LegalRulesModalProps> = ({
           {/* 4. Tabla de ARL */}
           <div className="space-y-3">
             <h3 className="font-bold text-xs uppercase text-slate-900 flex items-center gap-2 border-b border-slate-200 pb-1">
-              <span className="w-2 h-2 rounded-full bg-amber-600"></span>
+              <span className="w-2 h-2 rounded-full bg-neutral-800"></span>
               4. Tabla Tarifaria de Riesgos Laborales (ARL)
             </h3>
             <div className="grid grid-cols-5 gap-3">
@@ -308,7 +308,7 @@ export const LegalRulesModal: React.FC<LegalRulesModalProps> = ({
               </button>
               <button
                 type="submit"
-                className="inline-flex items-center gap-1.5 px-6 py-2 bg-emerald-600 hover:bg-emerald-700 text-white rounded-lg font-bold shadow-xs"
+                className="inline-flex items-center gap-1.5 px-6 py-2 bg-neutral-800 hover:bg-neutral-900 text-white rounded-lg font-bold shadow-xs"
               >
                 <CheckCircle2 className="w-4 h-4" />
                 Guardar y Recalcular

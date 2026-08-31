@@ -137,7 +137,7 @@ export const NovedadesManager: React.FC<NovedadesManagerProps> = ({
 
         <button
           onClick={() => setShowAddModal(true)}
-          className="inline-flex items-center gap-2 px-4 py-2.5 bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold rounded-xl shadow-xs transition-colors"
+          className="inline-flex items-center gap-2 px-4 py-2.5 bg-neutral-800 hover:bg-neutral-900 text-white text-xs font-bold rounded-xl shadow-xs transition-colors"
         >
           <PlusCircle className="w-4 h-4" />
           Registrar Nueva Novedad / Préstamo
@@ -224,14 +224,14 @@ export const NovedadesManager: React.FC<NovedadesManagerProps> = ({
                       </td>
                       <td className="p-3">
                         {nov.isSalaryNature ? (
-                          <span className="text-emerald-700 font-semibold text-[11px]">Salarial (IBC)</span>
+                          <span className="text-neutral-900 font-semibold text-[11px]">Salarial (IBC)</span>
                         ) : (
                           <span className="text-slate-500 font-medium text-[11px]">No Salarial (Ley 1393)</span>
                         )}
                       </td>
                       <td className="p-3 text-slate-600 max-w-xs truncate">{nov.observation}</td>
                       <td className="p-3 text-center">
-                        <span className="inline-flex items-center gap-1 px-2 py-0.5 bg-emerald-50 text-emerald-800 rounded-full font-bold text-[10px]">
+                        <span className="inline-flex items-center gap-1 px-2 py-0.5 bg-neutral-50 text-neutral-900 rounded-full font-bold text-[10px]">
                           <CheckCircle2 className="w-3 h-3" />
                           {nov.status}
                         </span>
@@ -278,13 +278,13 @@ export const NovedadesManager: React.FC<NovedadesManagerProps> = ({
                     <td className="p-3 text-right font-mono font-bold text-slate-900">
                       ${(loan.installmentAmount ?? loan.monthlyInstallment ?? 0).toLocaleString('es-CO')}
                     </td>
-                    <td className="p-3 text-right font-mono font-bold text-amber-700">
+                    <td className="p-3 text-right font-mono font-bold text-neutral-900">
                       ${(loan.balance ?? 0).toLocaleString('es-CO')}
                     </td>
                     <td className="p-3 text-slate-600 max-w-xs truncate">{loan.reason}</td>
                     <td className="p-3 text-center">
                       <span className={`px-2 py-0.5 rounded-full font-bold text-[10px] ${
-                        loan.status === 'Activo' ? 'bg-emerald-50 text-emerald-800' : 'bg-slate-100 text-slate-600'
+                        loan.status === 'Activo' ? 'bg-neutral-50 text-neutral-900' : 'bg-slate-100 text-slate-600'
                       }`}>
                         {loan.status}
                       </span>
@@ -304,7 +304,7 @@ export const NovedadesManager: React.FC<NovedadesManagerProps> = ({
             
             <div className="bg-slate-900 text-white px-6 py-4 flex items-center justify-between">
               <div className="flex items-center gap-2">
-                <PlusCircle className="w-5 h-5 text-emerald-400" />
+                <PlusCircle className="w-5 h-5 text-neutral-600" />
                 <h2 className="text-base font-semibold">Registro de Novedad o Préstamo</h2>
               </div>
               <button onClick={() => setShowAddModal(false)} className="text-slate-400 hover:text-white">✕</button>
@@ -347,7 +347,7 @@ export const NovedadesManager: React.FC<NovedadesManagerProps> = ({
 
               {/* Dynamic form fields for Overtime & Surcharges */}
               {(noveltyType === 'HORA_EXTRA' || noveltyType === 'RECARGO') && (
-                <div className="grid grid-cols-2 gap-4 bg-emerald-50/50 p-3 rounded-lg border border-emerald-200">
+                <div className="grid grid-cols-2 gap-4 bg-neutral-50/50 p-3 rounded-lg border border-neutral-200">
                   <div>
                     <label className="block font-semibold text-slate-700 mb-1">Tipo Específico</label>
                     <select
@@ -375,7 +375,7 @@ export const NovedadesManager: React.FC<NovedadesManagerProps> = ({
                       className="w-full px-3 py-1.5 border border-slate-300 rounded text-xs font-mono font-bold"
                     />
                   </div>
-                  <div className="col-span-2 text-[11px] text-emerald-900 flex justify-between font-mono font-semibold pt-1 border-t border-emerald-200">
+                  <div className="col-span-2 text-[11px] text-neutral-950 flex justify-between font-mono font-semibold pt-1 border-t border-neutral-200">
                     <span>Valor calculado automático:</span>
                     <span>${calculateOvertimeCost(overtimeType, quantity).toLocaleString('es-CO')} COP</span>
                   </div>
@@ -384,29 +384,29 @@ export const NovedadesManager: React.FC<NovedadesManagerProps> = ({
 
               {/* Loan Form */}
               {noveltyType === 'PRESTAMO' && (
-                <div className="grid grid-cols-2 gap-4 bg-amber-50/50 p-3 rounded-lg border border-amber-200">
+                <div className="grid grid-cols-2 gap-4 bg-neutral-100/50 p-3 rounded-lg border border-neutral-300">
                   <div>
-                    <label className="block font-semibold text-amber-900 mb-1">Monto del Préstamo (COP)</label>
+                    <label className="block font-semibold text-neutral-950 mb-1">Monto del Préstamo (COP)</label>
                     <input
                       type="number"
                       step="50000"
                       value={loanPrincipal}
                       onChange={e => setLoanPrincipal(Number(e.target.value))}
-                      className="w-full px-3 py-1.5 border border-amber-300 rounded text-xs font-mono font-bold"
+                      className="w-full px-3 py-1.5 border border-neutral-400 rounded text-xs font-mono font-bold"
                     />
                   </div>
                   <div>
-                    <label className="block font-semibold text-amber-900 mb-1">Número de Cuotas Mensuales</label>
+                    <label className="block font-semibold text-neutral-950 mb-1">Número de Cuotas Mensuales</label>
                     <input
                       type="number"
                       min="1"
                       max="36"
                       value={loanInstallments}
                       onChange={e => setLoanInstallments(Number(e.target.value))}
-                      className="w-full px-3 py-1.5 border border-amber-300 rounded text-xs font-mono font-bold"
+                      className="w-full px-3 py-1.5 border border-neutral-400 rounded text-xs font-mono font-bold"
                     />
                   </div>
-                  <div className="col-span-2 text-[11px] text-amber-950 flex justify-between font-mono font-semibold pt-1 border-t border-amber-200">
+                  <div className="col-span-2 text-[11px] text-neutral-950 flex justify-between font-mono font-semibold pt-1 border-t border-neutral-300">
                     <span>Descuento mensual en nómina:</span>
                     <span>${Math.round(loanPrincipal / loanInstallments).toLocaleString('es-CO')} COP</span>
                   </div>
@@ -459,7 +459,7 @@ export const NovedadesManager: React.FC<NovedadesManagerProps> = ({
                 <button
                   type="button"
                   onClick={noveltyType === 'PRESTAMO' ? handleCreateLoan : handleCreateNovelty}
-                  className="inline-flex items-center gap-1.5 px-5 py-2 bg-emerald-600 hover:bg-emerald-700 text-white rounded-lg font-bold shadow-xs"
+                  className="inline-flex items-center gap-1.5 px-5 py-2 bg-neutral-800 hover:bg-neutral-900 text-white rounded-lg font-bold shadow-xs"
                 >
                   <CheckCircle2 className="w-4 h-4" />
                   Guardar y Aplicar a Nómina
