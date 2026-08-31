@@ -120,10 +120,16 @@ export default function App() {
           } else {
             setCurrentPeriod(current);
           }
+          // Solo se muestran items del período vigente (los históricos acumulados
+          // por recálculos previos se descartan para que los totales no se inflen).
+          const currentItems = remote.payrollItems.filter(it => !it.periodId || it.periodId === current.id);
+          if (currentItems.length) setPayrollItems(currentItems);
         } else {
-          setCurrentPeriod(periodEngine.getCurrentPayrollPeriodInfo().period);
+          const current = periodEngine.getCurrentPayrollPeriodInfo().period;
+          setCurrentPeriod(current);
+          const currentItems = remote.payrollItems.filter(it => !it.periodId || it.periodId === current.id);
+          if (currentItems.length) setPayrollItems(currentItems);
         }
-        if (remote.payrollItems.length) setPayrollItems(remote.payrollItems);
         if (remote.auditLogs.length) setAuditLogs(remote.auditLogs);
       } catch (err) {
         console.error('[App] Error cargando datos desde Supabase', err);
@@ -183,13 +189,14 @@ export default function App() {
     const calculatedItems = activeEmps.map(emp => {
       const empNovedades = novedades.filter(n => n.employeeId === emp.id);
       const empLoans = loans.filter(l => l.employeeId === emp.id && l.status === 'Activo');
-      return payrollCalculationEngine.calculateEmployeePayroll(
+      const item = payrollCalculationEngine.calculateEmployeePayroll(
         emp,
         periodDays,
         empNovedades,
         empLoans,
         company
       );
+      return { ...item, periodId: currentPeriod.id };
     });
 
     setPayrollItems(calculatedItems);

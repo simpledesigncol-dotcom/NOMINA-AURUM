@@ -425,6 +425,7 @@ export interface CalculationExplanationItem {
 
 export interface PayrollItem {
   id: string;
+  periodId?: string; // Período quincenal al que pertenece (e.g. 'pp-2026-8-2')
   employeeId: string;
   employeeName: string;
   employeeDoc: string;

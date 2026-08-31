@@ -310,6 +310,11 @@ export async function fetchPayrollItems(): Promise<PayrollItem[]> {
 export async function savePayrollItems(items: PayrollItem[], periodId?: string): Promise<void> {
   if (!isSupabaseConfigured()) return;
   if (items.length === 0) return;
+  // Reemplaza los items del período: primero elimina lo previo de este período
+  // para evitar acumulación de items antiguos duplicados (las ids cambian en cada recálculo).
+  if (periodId) {
+    await supabase!.from('payroll_items').delete().eq('period_id', periodId);
+  }
   const rows = items.map(item => ({
     id: item.id,
     employee_id: item.employeeId,
