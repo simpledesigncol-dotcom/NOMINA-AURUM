@@ -138,7 +138,7 @@ export class ContractEngineService {
       employee.nonSalaryBonus || 0
     );
 
-    const isTransportEligible = !isIntegral && salary <= (1423500 * 2);
+    const isTransportEligible = !isIntegral && salary <= (1750905 * 2);
 
     return {
       id: `ctr-${Date.now()}`,

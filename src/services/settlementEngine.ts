@@ -44,7 +44,7 @@ export class SettlementEngineService {
 
   public calculateSettlement(input: TerminationInput): TerminationSettlement {
     const { employee, contract, terminationDate, reason, activeLoans = [] } = input;
-    const baseSalary = employee.currentSalary || contract.salary || 1423500;
+    const baseSalary = employee.currentSalary || contract.salary || 1750905;
     const isIntegral = contract.isIntegralSalary || employee.workerType === 'Salario Integral';
     const smlmv = legalRulesEngine.getSMLMV();
     const auxTransporte = legalRulesEngine.getAuxTransporte();

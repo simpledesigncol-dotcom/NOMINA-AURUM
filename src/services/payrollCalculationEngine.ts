@@ -30,7 +30,7 @@ export class PayrollCalculationEngine {
     const explanations: CalculationExplanationItem[] = [];
 
     // 1 & 2 & 3. Salario e información laboral
-    const baseSalary = input.appliedSalary || employee.currentSalary || 1423500;
+    const baseSalary = input.appliedSalary || employee.currentSalary || 1750905;
     const isIntegral = contract?.isIntegralSalary || employee.workerType === 'Salario Integral' || baseSalary >= smlmv * 13;
     const hourlyRate = legalRulesEngine.calculateHourlyRate(baseSalary);
 

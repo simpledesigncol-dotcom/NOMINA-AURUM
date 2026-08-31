@@ -49,7 +49,7 @@ export const DotacionManager: React.FC<DotacionManagerProps> = ({
   const selectedEmp = employees.find(e => e.id === selectedEmpId) || employees[0];
 
   // Eligible employees (Salario <= 2 SMLMV)
-  const eligibleEmployees = employees.filter(e => e.currentSalary <= (1423500 * 2) || e.workerType === 'Dependiente');
+  const eligibleEmployees = employees.filter(e => e.currentSalary <= (1750905 * 2) || e.workerType === 'Dependiente');
 
   // Custom Items builder for delivery
   const [items, setItems] = useState<DotacionItem[]>([
@@ -304,7 +304,7 @@ export const DotacionManager: React.FC<DotacionManagerProps> = ({
                       </span>
                     </td>
                     <td className="py-3.5 px-3">
-                      {emp.currentSalary <= (1423500 * 2) ? (
+                      {emp.currentSalary <= (1750905 * 2) ? (
                         <span className="px-2 py-0.5 bg-neutral-100 text-neutral-900 text-[10px] font-semibold rounded-full">
                           Obligatoria (Art. 230 CST)
                         </span>

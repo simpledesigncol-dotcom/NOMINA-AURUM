@@ -72,7 +72,7 @@ const EditEmployeeModalContent: React.FC<EditEmployeeModalContentProps> = ({
       email,
       address,
       state,
-      isTransportAllowanceEligible: currentSalary <= (1423500 * 2) && employee.workerType !== 'Salario Integral',
+      isTransportAllowanceEligible: currentSalary <= (1750905 * 2) && employee.workerType !== 'Salario Integral',
       dotacionSizes: {
         shoeSize,
         overolSize,

@@ -8,7 +8,7 @@ export const INITIAL_LEGAL_RULES: LegalRule[] = [
     nombre: 'Salario Mínimo Legal Mensual Vigente',
     descripcion: 'Remuneración mínima obligatoria para todo trabajador dependiente en Colombia en 2026',
     categoria: 'SALARIOS',
-    valor: 1423500,
+    valor: 1750905,
     unidad: '$ COP',
     fuenteNormativa: 'Ministerio del Trabajo / Decreto de Salario Mínimo',
     numeroNorma: 'Decreto Nacional Anual',
@@ -590,7 +590,7 @@ export class LegalRulesEngineService {
 
   // Cálculos parametrizados
   public getSMLMV(): number {
-    return this.getValue('SMLMV', 1423500);
+    return this.getValue('SMLMV', 1750905);
   }
 
   public getAuxTransporte(): number {
