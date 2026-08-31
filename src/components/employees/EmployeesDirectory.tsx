@@ -4,17 +4,17 @@ import {
   Users, 
   UserPlus, 
   Search, 
-  Filter, 
+  ListFilter, 
   FileText, 
   FileCheck, 
   TrendingUp, 
-  AlertCircle, 
+  CircleAlert, 
   Eye, 
   ChevronRight,
   Briefcase,
   Building,
   HeartPulse,
-  Edit3,
+  PenLine,
   Calendar,
   Wrench,
   Shirt
@@ -46,8 +46,8 @@ export const EmployeesDirectory: React.FC<EmployeesDirectoryProps> = ({
   onOpenEditEmployee,
 }) => {
   const [searchTerm, setSearchTerm] = useState('');
-  const [filterState, setFilterState] = useState<string>('ALL');
-  const [filterDept, setFilterDept] = useState<string>('ALL');
+  const [filterState, setListFilterState] = useState<string>('ALL');
+  const [filterDept, setListFilterDept] = useState<string>('ALL');
   const [viewMode, setViewMode] = useState<'CARDS' | 'TABLE'>('TABLE');
 
   const filteredEmployees = employees.filter(emp => {
@@ -89,7 +89,7 @@ export const EmployeesDirectory: React.FC<EmployeesDirectoryProps> = ({
         </button>
       </div>
 
-      {/* Filter and Search Bar - iOS Style */}
+      {/* ListFilter and Search Bar - iOS Style */}
       <div className="bg-white/90 backdrop-blur-xl p-4 rounded-3xl border border-slate-200/80 shadow-2xs flex flex-col md:flex-row gap-3 items-center justify-between text-xs">
         
         {/* Search */}
@@ -104,11 +104,11 @@ export const EmployeesDirectory: React.FC<EmployeesDirectoryProps> = ({
           />
         </div>
 
-        {/* Filters & View Toggle */}
+        {/* ListFilters & View Toggle */}
         <div className="flex flex-wrap items-center gap-2 w-full md:w-auto">
           <select
             value={filterState}
-            onChange={e => setFilterState(e.target.value)}
+            onChange={e => setListFilterState(e.target.value)}
             className="px-3 py-2 bg-slate-50 border border-slate-300 rounded-xl text-xs font-medium"
           >
             <option value="ALL">Todos los Estados</option>
@@ -120,7 +120,7 @@ export const EmployeesDirectory: React.FC<EmployeesDirectoryProps> = ({
 
           <select
             value={filterDept}
-            onChange={e => setFilterDept(e.target.value)}
+            onChange={e => setListFilterDept(e.target.value)}
             className="px-3 py-2 bg-slate-50 border border-slate-300 rounded-xl text-xs font-medium"
           >
             <option value="ALL">Todas las Áreas de Taller</option>
@@ -224,7 +224,7 @@ export const EmployeesDirectory: React.FC<EmployeesDirectoryProps> = ({
                             title="Editar Datos y Fecha de Contratación"
                             className="p-1.5 bg-neutral-100 hover:bg-neutral-200 text-neutral-900 rounded-lg transition-colors border border-neutral-300"
                           >
-                            <Edit3 className="w-3.5 h-3.5" />
+                            <PenLine className="w-3.5 h-3.5" />
                           </button>
 
                           {/* View Profile */}
@@ -327,7 +327,7 @@ export const EmployeesDirectory: React.FC<EmployeesDirectoryProps> = ({
                     onClick={() => onOpenEditEmployee(emp)}
                     className="inline-flex items-center gap-1 px-3 py-1.5 bg-neutral-100 text-neutral-900 border border-neutral-300 text-xs font-bold rounded-xl hover:bg-neutral-200 transition-colors"
                   >
-                    <Edit3 className="w-3.5 h-3.5" />
+                    <PenLine className="w-3.5 h-3.5" />
                     Editar Fecha
                   </button>
 

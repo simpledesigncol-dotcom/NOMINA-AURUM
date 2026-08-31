@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Employee, EmploymentContract, Company } from '../../types';
-import { TrendingUp, CheckCircle2, X } from 'lucide-react';
+import { TrendingUp, CircleCheckBig, X } from 'lucide-react';
 
 interface SalaryChangeModalProps {
   isOpen: boolean;
@@ -144,7 +144,7 @@ const SalaryChangeModalContent: React.FC<SalaryChangeModalContentProps> = ({
               type="submit"
               className="inline-flex items-center gap-1.5 px-5 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-bold shadow-xs"
             >
-              <CheckCircle2 className="w-4 h-4" />
+              <CircleCheckBig className="w-4 h-4" />
               Guardar Historial & Aplicar
             </button>
           </div>

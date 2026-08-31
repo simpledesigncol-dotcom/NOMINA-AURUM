@@ -14,7 +14,7 @@ import { legalRulesEngine } from '../../services/legalRulesEngine';
 import { 
   UserPlus, 
   FileText, 
-  CheckCircle2, 
+  CircleCheckBig, 
   ChevronRight, 
   ChevronLeft, 
   Building, 
@@ -87,7 +87,7 @@ export const EmployeeOnboardingModal: React.FC<EmployeeOnboardingModalProps> = (
   const [weeklyHours, setWeeklyHours] = useState<number>(44); // Ley 2101
   const [endDate, setEndDate] = useState('');
   const [probationDays, setProbationDays] = useState<number>(60);
-  const [workSchedule, setWorkSchedule] = useState('Lunes a Viernes 8:00 AM - 5:30 PM');
+  const [workSchedule, setWorkSchedule] = useState('Lunes a Viernes 8:00 AM - 6:00 PM, Sábados 8:00 AM - 12:00 M');
 
   if (!isOpen) return null;
 
@@ -165,7 +165,11 @@ export const EmployeeOnboardingModal: React.FC<EmployeeOnboardingModalProps> = (
     });
 
     newEmployee.activeContractId = newContract.id;
-    onSaveEmployee(newEmployee, newContract);
+    try {
+      onSaveEmployee(newEmployee, newContract);
+    } catch (err) {
+      console.error('[Onboarding] Error al guardar empleado/contrato:', err);
+    }
     onClose();
   };
 
@@ -592,12 +596,22 @@ export const EmployeeOnboardingModal: React.FC<EmployeeOnboardingModalProps> = (
                 </div>
                 <div>
                   <label className="block font-semibold text-slate-600 mb-1">Horario Laboral</label>
-                  <input
-                    type="text"
+                  <select
                     value={workSchedule}
                     onChange={e => setWorkSchedule(e.target.value)}
-                    className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-xs"
-                  />
+                    className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-xs bg-white"
+                  >
+                    <option value="Lunes a Viernes 8:00 AM - 6:00 PM, Sábados 8:00 AM - 12:00 M">
+                      Lunes a Viernes 8:00 AM - 6:00 PM, Sábados 8:00 AM - 12:00 M
+                    </option>
+                    <option value="Lunes a Viernes 9:00 AM - 7:00 PM">
+                      Lunes a Viernes 9:00 AM - 7:00 PM (sin sábados — compensa 4h semanales)
+                    </option>
+                    <option value="Lunes a Viernes 8:00 AM - 7:00 PM">
+                      Lunes a Viernes 8:00 AM - 7:00 PM (sin sábados — compensa 4h semanales)
+                    </option>
+                  </select>
+                  <span className="text-[10px] text-slate-400 mt-0.5 block">Selecciona el turno del colaborador</span>
                 </div>
               </div>
 
@@ -644,7 +658,7 @@ export const EmployeeOnboardingModal: React.FC<EmployeeOnboardingModalProps> = (
               onClick={handleFinish}
               className="inline-flex items-center gap-2 px-6 py-2.5 bg-neutral-800 hover:bg-neutral-900 text-white text-xs font-bold rounded-xl transition-colors shadow-md"
             >
-              <CheckCircle2 className="w-4 h-4" />
+              <CircleCheckBig className="w-4 h-4" />
               Emitir Contrato y Activar Empleado
             </button>
           )}

@@ -19,12 +19,12 @@ import {
   ShieldCheck, 
   CreditCard, 
   TrendingUp, 
-  AlertCircle, 
-  CheckCircle2, 
+  CircleAlert, 
+  CircleCheckBig, 
   Award, 
   ArrowLeft, 
-  Edit3, 
-  PlusCircle, 
+  PenLine, 
+  CirclePlus, 
   Download, 
   FileCheck,
   Building,
@@ -74,7 +74,7 @@ export const EmployeeProfileView: React.FC<EmployeeProfileViewProps> = ({
 }) => {
   const [activeTab, setActiveTab] = useState<'RESUMEN' | 'TIMELINE' | 'INFORMACION' | 'FINANZAS' | 'DOCUMENTOS'>('RESUMEN');
 
-  // Filtered data for this employee
+  // ListFiltered data for this employee
   const empSalaryHistory = salaryHistory.filter(s => s.employeeId === employee.id);
   const empLoans = loans.filter(l => l.employeeId === employee.id);
   const empNovedades = novedades.filter(n => n.employeeId === employee.id);
@@ -103,7 +103,7 @@ export const EmployeeProfileView: React.FC<EmployeeProfileViewProps> = ({
             onClick={() => onOpenEditEmployee(employee)}
             className="inline-flex items-center gap-1.5 px-3.5 py-2 bg-neutral-700 hover:bg-neutral-800 text-white text-xs font-bold rounded-xl shadow-xs transition-colors"
           >
-            <Edit3 className="w-3.5 h-3.5" />
+            <PenLine className="w-3.5 h-3.5" />
             Editar Datos & Fecha Contratación
           </button>
 
@@ -128,7 +128,7 @@ export const EmployeeProfileView: React.FC<EmployeeProfileViewProps> = ({
               onClick={() => onOpenTerminationModal(employee, contract)}
               className="inline-flex items-center gap-1.5 px-3 py-2 bg-rose-50 border border-rose-200 hover:bg-rose-100 text-rose-700 text-xs font-semibold rounded-xl transition-colors"
             >
-              <AlertCircle className="w-3.5 h-3.5 text-rose-600" />
+              <CircleAlert className="w-3.5 h-3.5 text-rose-600" />
               Retiro & Liquidación
             </button>
           )}
@@ -407,7 +407,7 @@ export const EmployeeProfileView: React.FC<EmployeeProfileViewProps> = ({
               onClick={() => onOpenEditEmployee(employee)}
               className="px-4 py-2 bg-neutral-700 hover:bg-neutral-800 text-white font-bold rounded-xl shadow-xs transition-colors flex items-center gap-1.5"
             >
-              <Edit3 className="w-3.5 h-3.5" />
+              <PenLine className="w-3.5 h-3.5" />
               Editar Fecha Ingreso & Datos
             </button>
           </div>

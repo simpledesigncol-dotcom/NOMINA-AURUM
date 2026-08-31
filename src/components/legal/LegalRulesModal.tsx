@@ -4,7 +4,7 @@ import { legalRulesEngine } from '../../services/legalRulesEngine';
 import { 
   Scale, 
   Settings2, 
-  CheckCircle2, 
+  CircleCheckBig, 
   RotateCcw, 
   X, 
   ShieldCheck, 
@@ -72,7 +72,7 @@ export const LegalRulesModal: React.FC<LegalRulesModalProps> = ({
           
           {successMsg && (
             <div className="p-3 bg-neutral-50 border border-neutral-200 text-neutral-950 rounded-xl flex items-center gap-2 font-semibold">
-              <CheckCircle2 className="w-4 h-4 text-neutral-800" />
+              <CircleCheckBig className="w-4 h-4 text-neutral-800" />
               ¡Parámetros normativos actualizados exitosamente! Todos los cálculos de nómina reflejan las nuevas tasas.
             </div>
           )}
@@ -310,7 +310,7 @@ export const LegalRulesModal: React.FC<LegalRulesModalProps> = ({
                 type="submit"
                 className="inline-flex items-center gap-1.5 px-6 py-2 bg-neutral-800 hover:bg-neutral-900 text-white rounded-lg font-bold shadow-xs"
               >
-                <CheckCircle2 className="w-4 h-4" />
+                <CircleCheckBig className="w-4 h-4" />
                 Guardar y Recalcular
               </button>
             </div>

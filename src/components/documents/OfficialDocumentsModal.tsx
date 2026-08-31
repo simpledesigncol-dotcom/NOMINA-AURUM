@@ -12,7 +12,7 @@ import {
   X, 
   BadgeCheck, 
   FileText,
-  AlertCircle
+  CircleAlert
 } from 'lucide-react';
 
 interface OfficialDocumentsModalProps {

@@ -13,18 +13,17 @@ import { legalRulesEngine } from '../../services/legalRulesEngine';
 import { 
   Calculator, 
   FileSpreadsheet, 
-  CheckCircle2, 
+  CircleCheckBig, 
   FileText, 
   ShieldCheck, 
   DollarSign, 
   Users, 
   Download, 
   Eye, 
-  AlertCircle,
-  HelpCircle,
+  CircleAlert,
+  Info,
   Building,
-  TrendingUp,
-  Info
+  TrendingUp
 } from 'lucide-react';
 
 interface PayrollDashboardProps {
@@ -51,7 +50,7 @@ export const PayrollDashboard: React.FC<PayrollDashboardProps> = ({
   onClosePeriod,
 }) => {
   const [selectedItemForInspect, setSelectedItemForInspect] = useState<PayrollItem | null>(null);
-  const [filterDept, setFilterDept] = useState<string>('ALL');
+  const [filterDept, setListFilterDept] = useState<string>('ALL');
 
   // Summary calculations
   const totalEmployeesCount = payrollItems.length;
@@ -159,7 +158,7 @@ export const PayrollDashboard: React.FC<PayrollDashboardProps> = ({
               onClick={onClosePeriod}
               className="inline-flex items-center gap-2 px-3.5 py-2 bg-slate-900 hover:bg-slate-800 text-white text-xs font-semibold rounded-xl shadow-xs transition-colors"
             >
-              <CheckCircle2 className="w-4 h-4 text-neutral-600" />
+              <CircleCheckBig className="w-4 h-4 text-neutral-600" />
               Aprobar & Cerrar Período
             </button>
           )}
@@ -212,13 +211,13 @@ export const PayrollDashboard: React.FC<PayrollDashboardProps> = ({
       {/* Payroll Matrix Table Card */}
       <div className="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-2xs">
         
-        {/* Table Header Filter & Search */}
+        {/* Table Header ListFilter & Search */}
         <div className="p-4 bg-slate-50 border-b border-slate-200 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs">
           <div className="flex items-center gap-3">
             <span className="font-bold text-slate-900">Nómina Detallada por Colaborador</span>
             <select
               value={filterDept}
-              onChange={e => setFilterDept(e.target.value)}
+              onChange={e => setListFilterDept(e.target.value)}
               className="px-2.5 py-1 bg-white border border-slate-300 rounded-lg text-xs font-medium"
             >
               <option value="ALL">Todos los Departamentos</option>
@@ -290,7 +289,7 @@ export const PayrollDashboard: React.FC<PayrollDashboardProps> = ({
                         title="Explicar cálculo paso a paso"
                         className="p-1.5 text-slate-600 hover:text-blue-700 hover:bg-blue-50 rounded-lg transition-colors"
                       >
-                        <HelpCircle className="w-4 h-4" />
+                        <Info className="w-4 h-4" />
                       </button>
                     </div>
                   </td>

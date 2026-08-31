@@ -49,19 +49,19 @@ import {
   Users, 
   Calculator, 
   Clock, 
-  BarChart3, 
+  ChartColumn, 
   Scale, 
   ShieldCheck, 
   FileText, 
   Sparkles, 
-  AlertCircle,
+  CircleAlert,
   Shirt,
   Banknote,
   Wrench,
   ChevronRight,
   RefreshCw,
   Sliders,
-  CheckCircle2,
+  CircleCheckBig,
   Package
 } from 'lucide-react';
 
@@ -200,6 +200,7 @@ export default function App() {
 
   // Save New Employee (from Onboarding Wizard)
   const handleSaveNewEmployee = (newEmployee: Employee, newContract: EmploymentContract) => {
+    console.log('[App] handleSaveNewEmployee', newEmployee.id, newContract.id);
     setEmployees(prev => [newEmployee, ...prev]);
     setContracts(prev => [newContract, ...prev]);
     saveEmployee(newEmployee);
@@ -569,7 +570,7 @@ export default function App() {
                   : 'text-slate-600 hover:text-slate-900'
               }`}
             >
-              <BarChart3 className="w-3.5 h-3.5 text-purple-600" />
+              <ChartColumn className="w-3.5 h-3.5 text-purple-600" />
               Costos & Auditoría
             </button>
           </div>

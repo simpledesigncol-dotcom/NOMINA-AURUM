@@ -13,15 +13,15 @@ import {
   Clock, 
   Calendar, 
   DollarSign, 
-  PlusCircle, 
-  CheckCircle2, 
+  CirclePlus, 
+  CircleCheckBig, 
   HeartHandshake, 
-  AlertCircle, 
+  CircleAlert, 
   FileText, 
   ShieldCheck,
   Percent,
   Search,
-  Filter
+  ListFilter
 } from 'lucide-react';
 
 interface NovedadesManagerProps {
@@ -139,7 +139,7 @@ export const NovedadesManager: React.FC<NovedadesManagerProps> = ({
           onClick={() => setShowAddModal(true)}
           className="inline-flex items-center gap-2 px-4 py-2.5 bg-neutral-800 hover:bg-neutral-900 text-white text-xs font-bold rounded-xl shadow-xs transition-colors"
         >
-          <PlusCircle className="w-4 h-4" />
+          <CirclePlus className="w-4 h-4" />
           Registrar Nueva Novedad / Préstamo
         </button>
       </div>
@@ -232,7 +232,7 @@ export const NovedadesManager: React.FC<NovedadesManagerProps> = ({
                       <td className="p-3 text-slate-600 max-w-xs truncate">{nov.observation}</td>
                       <td className="p-3 text-center">
                         <span className="inline-flex items-center gap-1 px-2 py-0.5 bg-neutral-50 text-neutral-900 rounded-full font-bold text-[10px]">
-                          <CheckCircle2 className="w-3 h-3" />
+                          <CircleCheckBig className="w-3 h-3" />
                           {nov.status}
                         </span>
                       </td>
@@ -304,7 +304,7 @@ export const NovedadesManager: React.FC<NovedadesManagerProps> = ({
             
             <div className="bg-slate-900 text-white px-6 py-4 flex items-center justify-between">
               <div className="flex items-center gap-2">
-                <PlusCircle className="w-5 h-5 text-neutral-600" />
+                <CirclePlus className="w-5 h-5 text-neutral-600" />
                 <h2 className="text-base font-semibold">Registro de Novedad o Préstamo</h2>
               </div>
               <button onClick={() => setShowAddModal(false)} className="text-slate-400 hover:text-white">✕</button>
@@ -461,7 +461,7 @@ export const NovedadesManager: React.FC<NovedadesManagerProps> = ({
                   onClick={noveltyType === 'PRESTAMO' ? handleCreateLoan : handleCreateNovelty}
                   className="inline-flex items-center gap-1.5 px-5 py-2 bg-neutral-800 hover:bg-neutral-900 text-white rounded-lg font-bold shadow-xs"
                 >
-                  <CheckCircle2 className="w-4 h-4" />
+                  <CircleCheckBig className="w-4 h-4" />
                   Guardar y Aplicar a Nómina
                 </button>
               </div>

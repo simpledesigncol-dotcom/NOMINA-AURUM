@@ -9,8 +9,8 @@ import {
 } from '../../types';
 import { settlementEngine } from '../../services/settlementEngine';
 import { 
-  AlertTriangle, 
-  CheckCircle2, 
+  TriangleAlert, 
+  CircleCheckBig, 
   FileText, 
   Scale, 
   X, 
@@ -88,7 +88,7 @@ const TerminationModalContent: React.FC<TerminationModalContentProps> = ({
         <div className="bg-rose-950 text-white px-6 py-4 flex items-center justify-between border-b border-rose-900">
           <div className="flex items-center gap-3">
             <div className="p-2 bg-rose-500/20 text-rose-400 rounded-lg border border-rose-500/30">
-              <AlertTriangle className="w-5 h-5" />
+              <TriangleAlert className="w-5 h-5" />
             </div>
             <div>
               <h2 className="text-base font-semibold">Proceso de Retiro & Liquidación Definitiva</h2>
@@ -246,7 +246,7 @@ const TerminationModalContent: React.FC<TerminationModalContentProps> = ({
             onClick={handleExecute}
             className="inline-flex items-center gap-2 px-6 py-2 bg-rose-600 hover:bg-rose-700 text-white rounded-lg font-bold shadow-md transition-colors"
           >
-            <CheckCircle2 className="w-4 h-4" />
+            <CircleCheckBig className="w-4 h-4" />
             Aprobar Liquidación y Finalizar Vínculo
           </button>
         </div>

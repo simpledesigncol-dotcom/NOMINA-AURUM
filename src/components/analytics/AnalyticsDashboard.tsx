@@ -8,9 +8,9 @@ import {
   Novedad 
 } from '../../types';
 import { 
-  BarChart3, 
+  ChartColumn, 
   TrendingUp, 
-  PieChart as PieIcon, 
+  ChartPie as PieIcon, 
   ShieldCheck, 
   Users, 
   DollarSign, 
