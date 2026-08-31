@@ -200,45 +200,58 @@ export default function App() {
 
   // Save New Employee (from Onboarding Wizard)
   const handleSaveNewEmployee = (newEmployee: Employee, newContract: EmploymentContract) => {
-    console.log('[App] handleSaveNewEmployee', newEmployee.id, newContract.id);
+    console.log('[App] handleSaveNewEmployee start', newEmployee.id, newContract.id);
     try {
+      console.log('[App] setEmployees');
       setEmployees(prev => [newEmployee, ...prev]);
+      console.log('[App] setContracts');
       setContracts(prev => [newContract, ...prev]);
+      console.log('[App] saveEmployee');
       saveEmployee(newEmployee);
+      console.log('[App] saveContract');
       saveContract(newContract);
+
+      const initialSal: SalaryHistoryRecord = {
+        id: `sh-${Date.now()}`,
+        employeeId: newEmployee.id,
+        contractId: newContract.id,
+        salary: newEmployee.currentSalary,
+        startDate: newEmployee.hireDate,
+        reason: 'Salario inicial de contratación pactado',
+        createdBy: 'Mateo Cárdenas (Admin)',
+        createdAt: new Date().toISOString(),
+      };
+      console.log('[App] setSalaryHistory');
+      setSalaryHistory(prev => [initialSal, ...prev]);
+      console.log('[App] saveSalaryHistory');
+      saveSalaryHistory(initialSal);
+
+      console.log('[App] addAuditLog');
+      addAuditLog(
+        'ALTA_EMPLEADO_CONTRATO',
+        'Contratación',
+        `Ingreso de ${newEmployee.firstName} ${newEmployee.lastName} (${newEmployee.position}) con contrato ${newContract.contractNumber}.`
+      );
+
+      console.log('[App] defer setDocumentModalState');
+      // Defer modal opening to next tick to isolate render
+      setTimeout(() => {
+        console.log('[App] setDocumentModalState deferred');
+        setDocumentModalState({
+          isOpen: true,
+          type: 'CONTRATO',
+          employee: newEmployee,
+          contract: newContract,
+        });
+      }, 0);
+
+      console.log('[App] handleRecalculatePayroll deferred');
+      setTimeout(handleRecalculatePayroll, 200);
     } catch (err) {
-      console.error('[App] handleSaveNewEmployee error:', err);
+      console.error('[App] handleSaveNewEmployee FATAL:', err);
       if (err instanceof Error) console.error('Stack:', err.stack);
       throw err;
     }
-
-    const initialSal: SalaryHistoryRecord = {
-      id: `sh-${Date.now()}`,
-      employeeId: newEmployee.id,
-      contractId: newContract.id,
-      salary: newEmployee.currentSalary,
-      startDate: newEmployee.hireDate,
-      reason: 'Salario inicial de contratación pactado',
-      createdBy: 'Mateo Cárdenas (Admin)',
-      createdAt: new Date().toISOString(),
-    };
-    setSalaryHistory(prev => [initialSal, ...prev]);
-    saveSalaryHistory(initialSal);
-
-    addAuditLog(
-      'ALTA_EMPLEADO_CONTRATO',
-      'Contratación',
-      `Ingreso de ${newEmployee.firstName} ${newEmployee.lastName} (${newEmployee.position}) con contrato ${newContract.contractNumber}.`
-    );
-
-    setDocumentModalState({
-      isOpen: true,
-      type: 'CONTRATO',
-      employee: newEmployee,
-      contract: newContract,
-    });
-
-    setTimeout(handleRecalculatePayroll, 200);
   };
 
   // Edit Employee Data & Hire Date (CRITICAL for user request)
